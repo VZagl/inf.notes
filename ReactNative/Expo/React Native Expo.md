@@ -107,3 +107,4 @@ export default function App() {
 ## Полезные ссылки
 
 - [Документация Expo](https://docs.expo.dev/)
+- [От Web к Native с React](https://habr.com/ru/companies/timeweb/articles/833904/)
