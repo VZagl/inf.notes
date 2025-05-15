@@ -1,0 +1,19 @@
+{
+	"name": "inf.notes",
+	"version": "1.0.0",
+	"description": "",
+	"main": "readme.md",
+	"scripts": {
+		"preinstall": "npx only-allow pnpm"
+	},
+	"keywords": [],
+	"author": "Zahliada VM",
+	"license": "Unlicense",
+	"dependencies": {
+		"prettier": "^3.5.3",
+		"prettier-plugin-css-order": "^2.1.2",
+		"prettier-plugin-organize-attributes": "^1.0.0",
+		"prettier-plugin-organize-imports": "^4.1.0"
+	},
+	"packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
+}

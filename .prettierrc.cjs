@@ -1,0 +1,21 @@
+module.exports = {
+	tabWidth: 2,
+	useTabs: true,
+	quoteProps: 'as-needed',
+	singleQuote: true,
+	jsxSingleQuote: true,
+	trailingComma: 'es5',
+	bracketSpacing: true,
+	bracketSameLine: false,
+	arrowParens: 'always',
+	maxLen: ['warn', 140, 2],
+	semi: true,
+	embeddedLanguageFormatting: 'auto',
+	// linebreakStyle: ['off', 'windows'],
+	plugins: [
+		'prettier-plugin-organize-imports',
+		'prettier-plugin-organize-attributes',
+		'prettier-plugin-css-order',
+	],
+	organizeImportsSkipDestructiveCodeActions: true,
+};
