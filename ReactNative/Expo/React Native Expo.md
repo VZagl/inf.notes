@@ -19,7 +19,6 @@
 ### npm
 
 ```bash
-npm install -g expo-cli
 npx create-expo-app my-app
 cd my-app
 npx expo start
@@ -28,7 +27,6 @@ npx expo start
 ### yarn
 
 ```bash
-yarn global add expo-cli
 yarn create expo-app my-app
 cd my-app
 yarn expo start
@@ -37,7 +35,6 @@ yarn expo start
 ### pnpm
 
 ```bash
-pnpm add -g expo-cli
 pnpm create expo my-app
 cd my-app
 pnpm expo start
@@ -45,9 +42,12 @@ pnpm expo start
 
 ## Структура проекта
 
-- `App.js` — основной файл приложения.
-- `assets/` — папка для изображений и других ресурсов.
-- `package.json` — зависимости проекта.
+- `app/` — директория для файлов маршрутизации (при использовании Expo Router)
+- `assets/` — папка для изображений и других ресурсов
+- `package.json` — зависимости проекта
+- `app.json` — конфигурация Expo
+- `babel.config.js` — настройки Babel
+- `tsconfig.json` — настройки TypeScript (если используется)
 
 ## Использование компонентов
 
@@ -88,8 +88,13 @@ export default function App() {
 
 ## Публикация приложения
 
-- `expo publish` — публикация обновлений через Expo.
-- `expo build` — сборка standalone-приложения для iOS/Android.
+- EAS (Expo Application Services) используется для сборки и публикации:
+  ```bash
+  pnpm add -g eas-cli
+  eas build  # Сборка приложения
+  eas update # Публикация OTA-обновлений
+  eas submit # Отправка в App Store/Google Play
+  ```
 
 ## Плюсы и минусы Expo
 
@@ -101,11 +106,15 @@ export default function App() {
 
 **Минусы:**
 
-- Ограничения по нативным модулям (можно решить через EAS или "eject").
-- Размер приложения может быть больше.
+- Некоторые нативные модули могут потребовать Development Build
+- Размер базового приложения немного больше чистого React Native
+- Необходимость использования EAS для продвинутых сценариев сборки
 
 ## Полезные ссылки
 
 - [Документация Expo](https://docs.expo.dev/)
+  - [Expo Router](https://docs.expo.dev/router/introduction/)
   - [Expo SDK](https://docs.expo.dev/versions/latest/sdk/expo/)
+  - [EAS](https://docs.expo.dev/eas/)
+  - [Development Builds](https://docs.expo.dev/development/introduction/)
 - [От Web к Native с React](https://habr.com/ru/companies/timeweb/articles/833904/)
