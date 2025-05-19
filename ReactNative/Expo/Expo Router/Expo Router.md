@@ -10,7 +10,8 @@
 - Поддержка вложенной навигации.
 - Динамические маршруты и параметры.
 - Глубокие ссылки (Deep Linking).
-- Простая интеграция с Expo и React Navigation.
+- Простая интеграция с **Expo** и **React Navigation**.
+- Автоматическое разделение кода и поддержка **React Suspense** для оптимизации загрузки ([Code Splitting и React Suspense](Code%20Splitting%20и%20React%20Suspense.md))
 
 ## Установка
 
