@@ -8,7 +8,6 @@
 		"guides": {
 			"bracketPairs": true
 		},
-		"fontSize": 18,
 		"tabSize": 2,
 		"insertSpaces": false,
 		"inlineSuggest": {
@@ -77,12 +76,6 @@
 		}
 	},
 
-	"terminal": {
-		"integrated": {
-			"gpuAcceleration": "off"
-		}
-	},
-
 	"indentRainbow": {
 		"updateDelay": 100,
 		"colors": [
@@ -142,15 +135,5 @@
 
 	"notebook": {
 		"defaultFormatter": "esbenp.prettier-vscode"
-	},
-
-	"markdown": {
-		"preview": {
-			"fontSize": 18
-		}
-	},
-
-	"scm": {
-		"inputFontSize": 14
 	}
 }

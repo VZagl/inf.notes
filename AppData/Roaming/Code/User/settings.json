@@ -2,16 +2,19 @@
 	"telemetry": {
 		"telemetryLevel": "off"
 	},
+
 	"redhat": {
 		"telemetry": {
 			"enabled": false
 		}
 	},
+
 	"dotnetAcquisitionExtension": {
 		"telemetry": {
 			"enabled": false
 		}
 	},
+
 	"workbench": {
 		"iconTheme": "vscode-icons",
 		"editor": {
@@ -20,17 +23,43 @@
 			}
 		}
 	},
+
 	"window": {
 		"title": "${activeEditorLong}${separator}${rootName}",
 		"titleSeparator": " — "
 	},
+
 	"vsicons": {
 		"dontShowNewVersionMessage": true
 	},
+
 	"locale": "ru",
 	"liveServer": {
 		"settings": {
 			"donotShowInfoMsg": true
 		}
+	},
+
+	"editor": {
+		"fontSize": 18,
+		"hover": {
+			"delay": 1000
+		}
+	},
+
+	"terminal": {
+		"integrated": {
+			"gpuAcceleration": "off"
+		}
+	},
+
+	"markdown": {
+		"preview": {
+			"fontSize": 18
+		}
+	},
+
+	"scm": {
+		"inputFontSize": 14
 	}
 }
