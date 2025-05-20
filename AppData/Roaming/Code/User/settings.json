@@ -1,0 +1,36 @@
+{
+	"telemetry": {
+		"telemetryLevel": "off"
+	},
+	"redhat": {
+		"telemetry": {
+			"enabled": false
+		}
+	},
+	"dotnetAcquisitionExtension": {
+		"telemetry": {
+			"enabled": false
+		}
+	},
+	"workbench": {
+		"iconTheme": "vscode-icons",
+		"editor": {
+			"empty": {
+				"hint": "hidden"
+			}
+		}
+	},
+	"window": {
+		"title": "${activeEditorLong}${separator}${rootName}",
+		"titleSeparator": " — "
+	},
+	"vsicons": {
+		"dontShowNewVersionMessage": true
+	},
+	"locale": "ru",
+	"liveServer": {
+		"settings": {
+			"donotShowInfoMsg": true
+		}
+	}
+}
