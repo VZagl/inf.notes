@@ -22,6 +22,7 @@
 
    ```sh
    expo install expo-location expo-task-manager expo-file-system
+   expo install expo-sensors
    ```
 
 2. **Регистрация фоновой задачи**
@@ -93,21 +94,81 @@
    import { View } from 'react-native';
    import { useEffect, useState } from 'react';
    import { readLocations } from '../../lib/storage';
+   import { MotionDetector } from '../../lib/motion/detector';
 
    export default function TrackingScreen() {
    	const [locations, setLocations] = useState([]);
 
    	useEffect(() => {
-   		// Загрузка и отображение данных
+   		const detector = new MotionDetector();
+   		detector.start();
+
    		const loadLocations = async () => {
    			const data = await readLocations();
    			setLocations(data);
    		};
 
    		loadLocations();
+
+   		return () => {
+   			detector.stop();
+   		};
    	}, []);
 
    	return <View>{/* Карта и UI элементы */}</View>;
+   }
+   ```
+
+5. **Детектор движения**
+
+   > Файл: lib/motion/detector.ts
+
+   ```js
+   import { Accelerometer } from 'expo-sensors';
+   import { startLocationUpdates, stopLocationUpdates } from '../location';
+
+   const MOTION_THRESHOLD = 0.1;
+   const STABLE_TIMEOUT = 30000;
+
+   export class MotionDetector {
+     private lastUpdate = 0;
+     private lastMovement = 0;
+     private isTracking = false;
+     private subscription: any = null;
+
+     async start() {
+       Accelerometer.setUpdateInterval(50);
+
+       this.subscription = Accelerometer.addListener(data => {
+         const { x, y, z } = data;
+         const now = Date.now();
+
+         if (now - this.lastUpdate < 50) return;
+         this.lastUpdate = now;
+
+         const movement = Math.sqrt(x * x + y * y + z * z);
+         if (movement > MOTION_THRESHOLD) {
+           this.lastMovement = now;
+
+           if (!this.isTracking) {
+             this.isTracking = true;
+             startLocationUpdates();
+           }
+         } else if (this.isTracking && (now - this.lastMovement > STABLE_TIMEOUT)) {
+           this.isTracking = false;
+           stopLocationUpdates();
+         }
+       });
+     }
+
+     stop() {
+       if (this.subscription) {
+         this.subscription.remove();
+       }
+       if (this.isTracking) {
+         stopLocationUpdates();
+       }
+     }
    }
    ```
 
@@ -140,6 +201,12 @@
    				"expo-location",
    				{
    					"locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+   				}
+   			],
+   			[
+   				"expo-sensors",
+   				{
+   					"motionPermission": "Allow $(PRODUCT_NAME) to access device motion"
    				}
    			]
    		],
@@ -225,6 +292,15 @@
    - Реализовать механизм синхронизации с сервером
    - Добавить систему кэширования для быстрого доступа к последним координатам
 
+5. **После добавления оптимизации с акселерометром**
+
+Теперь приложение будет:
+
+- Отслеживать движение устройства через акселерометр
+- Включать GPS только при обнаружении движения
+- Отключать GPS после 30 секунд покоя
+- Экономить заряд батареи при неподвижном состоянии
+
 ### Структура проекта
 
 ```text
@@ -239,6 +315,8 @@ my-app/
 │   │   ├── index.ts       # Основной экспорт
 │   │   ├── task.ts        # Фоновая задача
 │   │   └── permissions.ts  # Управление разрешениями
+│   ├── motion/
+│   │   └── detector.ts    # Детектор движения
 │   └── storage/
 │       ├── index.ts       # Основной экспорт
 │       └── locations.ts    # Работа с хранилищем
@@ -258,3 +336,4 @@ my-app/
 - [expo-location](https://docs.expo.dev/versions/latest/sdk/location/) - работа с геолокацией
 - [expo-task-manager](https://docs.expo.dev/versions/latest/sdk/task-manager/) - фоновые задачи
 - [expo-file-system](https://docs.expo.dev/versions/latest/sdk/filesystem/) - работа с файлами
+- [expo-sensors](https://docs.expo.dev/versions/latest/sdk/sensors/) - работа с сенсорами
