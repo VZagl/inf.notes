@@ -135,5 +135,33 @@
 
 	"notebook": {
 		"defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"markdown": {
+		"preview": {
+			"breaks": true, // Одиночные переносы строк отображаются как <br>
+			"typographer": true // Включает типографские улучшения текста
+		}
+	},
+
+	"markdown-preview-enhanced": {
+		"enableTypographer": true,
+		"previewTheme": "github-dark.css",
+		"frontMatterRender": true,
+		"enableScriptExecution": true,
+		"style": "github-dark.css"
+	},
+
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode", // Использует Prettier для форматирования Markdown файлов
+		"editor.formatOnSave": true, // Автоматическое форматирование при сохранении
+		"editor.wordWrap": "on", // Включает перенос строк для удобства чтения
+		"editor.renderWhitespace": "all", // Показывает символы пробелов и табуляции
+		"editor.quickSuggestions": {
+			// Настройки автодополнения
+			"comments": "on", // Включено в комментариях
+			"strings": "on", // Включено в строках
+			"other": "on" // Включено везде
+		}
 	}
 }
