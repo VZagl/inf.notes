@@ -290,4 +290,5 @@ import { VirtualizedList, Text } from 'react-native';
 
 ---
 
+> [!NOTE]
 > Это основные компоненты React Native. Для подробностей см. [официальную документацию](https://reactnative.dev/docs/components-and-apis).

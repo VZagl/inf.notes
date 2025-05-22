@@ -197,7 +197,8 @@ const styles = {
 };
 ```
 
-!!!note Примечание: для работы чекбокса необходимо установить пакет `expo-elements` или использовать другую реализацию чекбокса по вашему выбору.
+> [!NOTE]
+> Для работы чекбокса необходимо установить пакет `expo-elements` или использовать другую реализацию чекбокса по вашему выбору.
 
 - [Formik + React Native](https://formik.org/docs/examples/react-native)
 - [React Hook Form + React Native](https://react-hook-form.com/get-started#ReactNative)

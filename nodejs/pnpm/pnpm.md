@@ -41,7 +41,7 @@ corepack enable pnpm
 corepack prepare pnpm@latest --activate
 ```
 
-> **Примечание:**
+> [!NOTE] Примечание:
 >
 > - Для Node.js версии ниже 16.13, сначала установите Corepack:
 >
