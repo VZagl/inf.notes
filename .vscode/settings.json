@@ -146,7 +146,8 @@
 	},
 
 	"[markdown]": {
-		"editor.defaultFormatter": "yzhang.markdown-all-in-one", // Использует Prettier для форматирования Markdown файлов
+		// "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+		"editor.defaultFormatter": "esbenp.prettier-vscode", // Использует Prettier для форматирования Markdown файлов
 		"editor.formatOnSave": true, // Автоматическое форматирование при сохранении
 		"editor.wordWrap": "on", // Включает перенос строк для удобства чтения
 		"editor.renderWhitespace": "all", // Показывает символы пробелов и табуляции

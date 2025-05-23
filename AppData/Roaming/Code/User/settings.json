@@ -61,5 +61,6 @@
 
 	"scm": {
 		"inputFontSize": 14
-	}
+	},
+	"git.openRepositoryInParentFolders": "never"
 }
