@@ -62,5 +62,6 @@
 	"scm": {
 		"inputFontSize": 14
 	},
-	"git.openRepositoryInParentFolders": "never"
+	"git.openRepositoryInParentFolders": "never",
+	"workbench.iconTheme": "vscode-icons"
 }
