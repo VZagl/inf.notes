@@ -63,5 +63,6 @@
 		"inputFontSize": 14
 	},
 	"git.openRepositoryInParentFolders": "never",
-	"workbench.iconTheme": "vscode-icons"
+	"workbench.iconTheme": "vscode-icons",
+	"editor.inlineSuggest.suppressSuggestions": true
 }
