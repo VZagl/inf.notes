@@ -15,5 +15,8 @@ pnpm-lock.yaml
 .idea
 .DS_Store
 
+# QODO AI assistant history
+.qodo
+
 # Temporary files
 *.~
