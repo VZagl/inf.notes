@@ -384,5 +384,15 @@
 	},
 
 	"workbench.iconTheme": "vscode-icons",
-	"editor.inlineSuggest.suppressSuggestions": true
+	"editor.inlineSuggest.suppressSuggestions": true,
+
+	// Настройки для AI-ассистента AMP от Sourcegraph
+  "amp": {
+		// URL для AMP сервиса
+		"url": "https://ampcode.com/",
+		// Уровень масштабирования интерфейса
+		"ui": {
+			"zoomLevel": 1.2
+		}
+	}
 }
