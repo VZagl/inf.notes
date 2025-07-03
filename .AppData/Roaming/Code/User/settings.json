@@ -473,5 +473,10 @@
 		}
 	},
 	"amp.notifications.enabled": false,
-	"amp.commands.allowlist": ["timeout"]
+	"amp.commands.allowlist": ["timeout"],
+	"yaml.schemas": {
+		"c:\\Users\\prof\\.vscode\\extensions\\continue.continue-1.0.15-win32-x64\\config-yaml-schema.json": [
+			".continue/**/*.yaml"
+		]
+	}
 }
