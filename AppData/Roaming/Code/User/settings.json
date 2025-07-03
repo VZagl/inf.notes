@@ -339,7 +339,7 @@
 				"includeContext": true,
 
 				// Файлы с дополнительными инструкциями (ОБНОВЛЕНО: новый путь)
-				"contextFiles": ["./.cody/CODY_CONTEXT.md", "./.cody/instructions.md"],
+				"contextFiles": [".cody/CODY_CONTEXT.md", ".cody/instructions.md"],
 
 				// Анализировать изменения в коде для лучшего понимания
 				"analyzeChanges": true,
@@ -361,11 +361,10 @@
 			"autoLoadContext": true,
 
 			// Префикс для каждого запроса (будет добавляться автоматически)
-			// ОБНОВЛЕНО: новый путь к файлу инструкций
 			"systemPrompt": "Используй инструкции из файла .cody/CODY_CONTEXT.md в корне проекта. Следуй всем правилам и соглашениям, указанным в этом файле.",
 
 			// Файлы с инструкциями, которые нужно читать перед каждым ответом
-			"instructionFiles": ["./.cody/CODY_CONTEXT.md"]
+			"instructionFiles": [".cody/CODY_CONTEXT.md"]
 		},
 
 		// Настройки для интеграции с Git
@@ -434,9 +433,9 @@
 
 			// Файлы, которые всегда должны быть включены в контекст
 			"alwaysIncludeFiles": [
-				"./.cody/CODY_CONTEXT.md",
-				"./.cody/instructions.md",
-				"./README.md"
+				".cody/CODY_CONTEXT.md",
+				".cody/instructions.md",
+				"README.md"
 			],
 
 			// Максимальное количество файлов в контексте
