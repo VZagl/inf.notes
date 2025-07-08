@@ -463,19 +463,44 @@
 	"workbench.iconTheme": "vscode-icons",
 	"editor.inlineSuggest.suppressSuggestions": true,
 
-	// Настройки для AI-ассистента AMP от Sourcegraph
+	/*
+		Настройки для AI-ассистента AMP от Sourcegraph
+		
+		AMP (Amplified Code) - это AI-помощник для разработки от компании Sourcegraph,
+		который предоставляет расширенные возможности для работы с кодом.
+	*/
 	"amp": {
-		// URL для AMP сервиса
+		// URL-адрес для подключения к сервису AMP
+		// По умолчанию используется официальный сервер Sourcegraph
 		"url": "https://ampcode.com/",
-		// Уровень масштабирования интерфейса
+
+		// Настройки пользовательского интерфейса
 		"ui": {
+			// Уровень масштабирования интерфейса AMP
+			// 1.2 = увеличение на 20% для лучшей читаемости
 			"zoomLevel": 1.2
-		}
+		},
+
+		// Отключение уведомлений от AMP для минимизации отвлечений
+		// Соответствует общей политике отключения телеметрии в конфигурации
+		"notifications.enabled": false,
+
+		// Список разрешенных команд для выполнения через AMP
+		// "timeout" - команда для управления таймаутами операций
+		// Ограниченный список команд повышает безопасность
+		"commands.allowlist": ["timeout"]
 	},
-	"amp.notifications.enabled": false,
-	"amp.commands.allowlist": ["timeout"],
+
+	/*
+		Настройки для AI-ассистента Continue
+
+		Настройки схем YAML для валидации конфигурационных файлов
+		Определяет соответствие между JSON схемами и YAML файлами для автодополнения и проверки синтаксиса
+	*/
 	"yaml.schemas": {
-		"c:\\Users\\prof\\.vscode\\extensions\\continue.continue-1.0.15-win32-x64\\config-yaml-schema.json": [
+		// Схема для валидации конфигурационных файлов расширения Continue AI
+		// Обеспечивает автодополнение и проверку синтаксиса в .continue/*.yaml файлах
+		"c:\\Users\\prof\\.vscode\\extensions\\continue.continue-1.1.56-win32-x64\\config-yaml-schema.json": [
 			".continue/**/*.yaml"
 		]
 	}
