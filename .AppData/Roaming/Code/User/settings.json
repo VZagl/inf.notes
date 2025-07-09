@@ -219,7 +219,25 @@
 			"typographer": true, // Включает типографские улучшения текста
 			"fontSize": 18
 		},
-		"extension.preview.autoShowPreviewToSide": true // Автоматически открывать предпросмотр Markdown сбоку
+		"extension": {
+			"preview": {
+				"autoShowPreviewToSide": true // Автоматически открывать предпросмотр Markdown сбоку
+			},
+			// ========== НАСТРОЙКИ TABLE OF CONTENTS ==========
+			"toc": {
+				"enabled": true, // Включить функцию TOC
+				"updateOnSave": true, // Автоматически обновлять содержание при сохранении
+				"levels": "2..6", // Уровни заголовков для включения в содержание (2-6)
+				"orderedList": false, // Использовать маркированный список вместо нумерованного
+				"plaintext": false, // Использовать ссылки вместо обычного текста
+				"slugify": "github", // Стиль генерации якорей (github, gitlab, vscode)
+				"omittedFromToc": {}, // Заголовки, которые нужно исключить из содержания
+				"tabSize": 2, // Размер отступа для вложенных элементов
+				"insertAnchor": false, // Не вставлять якоря в заголовки
+				"githubCompatibility": true, // Совместимость с GitHub Markdown
+				"autoInsert": true // Автоматически вставлять TOC при создании нового файла
+			}
+		}
 	},
 
 	"[markdown]": {
