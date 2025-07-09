@@ -28,12 +28,15 @@
 - ✅ **Неизменные блоки** заменяй комментарием `// ... здесь без изменений ...`
 - ✅ **Большие файлы** показывай частями с указанием номеров строк
 - ✅ **Используй diff формат** для наглядности изменений
+- ✅ **Имя файла указывай строкой выше блока кода**, а не в теге
 - ❌ **НЕ выводи** полные листинги файлов без необходимости
 - ❌ **НЕ дублируй** неизменный код
 
 **Примеры правильного вывода**:
 
-```typescript:example.ts
+**example.ts**
+
+```typescript
 // ... здесь без изменений (строки 1-15) ...
 
 function calculateSum(numbers: number[]): number {
@@ -48,12 +51,14 @@ function calculateSum(numbers: number[]): number {
 
 **Или в виде фрагментов**:
 
-```typescript:example.ts
-// Строки 20-25: изменения в функции calculateSum
+**example.ts (строки 20-25)**
+
+```typescript
+// Изменения в функции calculateSum
 function calculateSum(numbers: number[]): number {
-    // Добавляем проверку на пустой массив
-    if (numbers.length === 0) return 0;
-    return numbers.reduce((sum, current) => sum + current, 0);
+	// Добавляем проверку на пустой массив
+	if (numbers.length === 0) return 0;
+	return numbers.reduce((sum, current) => sum + current, 0);
 }
 ```
 
