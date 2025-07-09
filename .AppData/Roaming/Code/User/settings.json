@@ -221,7 +221,7 @@
 		},
 		"extension": {
 			"preview": {
-				"autoShowPreviewToSide": true // Автоматически открывать предпросмотр Markdown сбоку
+				"autoShowPreviewToSide": false // Автоматически открывать предпросмотр Markdown сбоку
 			},
 			// ========== НАСТРОЙКИ TABLE OF CONTENTS ==========
 			"toc": {
@@ -443,19 +443,28 @@
 		// ========== ЭКСПЕРИМЕНТАЛЬНЫЕ ФУНКЦИИ ==========
 		"experimental": {
 			// Улучшенное понимание контекста кода
-			// Использует более продвинутые алгоритмы анализа
 			"enhancedContext": true,
 
 			// Предложения на основе истории использования
-			// Учитывает ваши предыдущие паттерны кодирования
 			"historySuggestions": true,
 
 			// Интеграция с системой контроля версий
-			// Анализирует git историю для лучших предложений
 			"gitIntegration": true,
 
 			// Кэширование ответов для ускорения работы
-			"responseCache": true
+			"responseCache": true,
+
+			// Экспериментальная генерация commit сообщений
+			"commitMessageGeneration": true,
+
+			// Улучшенный анализ git diff для commit сообщений
+			"enhancedGitAnalysis": true,
+
+			// Контекстно-зависимые commit сообщения
+			"contextAwareCommits": true,
+
+			// Автоматическое включение файлов проекта в контекст для commit
+			"autoIncludeProjectContext": true
 		},
 
 		// Автоматическое включение контекстных файлов
