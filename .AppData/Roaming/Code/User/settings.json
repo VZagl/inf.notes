@@ -242,10 +242,13 @@
 
 	"[markdown]": {
 		// "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+		"editor.tabSize": 2, // Размер отступа для Markdown файлов
+		"editor.insertSpaces": false,
 		"editor.defaultFormatter": "esbenp.prettier-vscode", // Использует Prettier для форматирования Markdown файлов
 		"editor.formatOnSave": true, // Автоматическое форматирование при сохранении
 		"editor.wordWrap": "on", // Включает перенос строк для удобства чтения
 		"editor.renderWhitespace": "all", // Показывает символы пробелов и табуляции
+		"editor.detectIndentation": false, // Отключить автоопределение отступов
 		"editor.quickSuggestions": {
 			// Настройки автодополнения
 			"comments": "on", // Включено в комментариях
