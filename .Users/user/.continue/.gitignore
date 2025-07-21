@@ -13,3 +13,4 @@
 # !/src/main.py
 
 # !/config.yaml
+!/local-ollama.config.yaml

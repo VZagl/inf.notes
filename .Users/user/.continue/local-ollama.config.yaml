@@ -1,0 +1,116 @@
+%YAML 1.1
+---
+name: Local ollama config for Continue
+version: 1.0.0
+schema: v1
+
+model_defaults: &model_defaults
+  provider: ollama
+  apiBase: 'http://192.168.10.27:11434'
+  # --- Add this line ---
+  baseSystemMessage: |
+    Ты — полезный AI-помощник, который всегда отвечает на русском языке.
+    При написании кода используй русские комментарии.
+    Всегда общайся на русском языке, независимо от запроса.
+  # ---------------------
+roles_defaults: &roles_defaults
+  roles:
+    - chat
+    - edit
+    - apply
+    # - autocomplete
+    - embed
+    - rerank
+
+models:
+  # ollama.com/library/qwen3:14b
+  # 9.3GB, 14B-q4, 40K, Text
+  - name: qwen3:14b
+    model: qwen3:14b
+    # model: hf.co/t-tech/t-pro-it-1.0-q4_k_m
+    <<: *model_defaults
+    # <<: *roles_defaults
+
+  # работает хорошо. в том числе и Agent
+  # но очень медленно. потребляет 19+ ГБ RAM
+  # https://ollama.com/library/mistral-small3.2:24b-instruct-2506-q4_K_M
+  # 15GB, 24B, 128K, Text, Image
+  - name: mistral-small3.2:24b-instruct-2506-q4_k_m
+    model: mistral-small3.2:24b-instruct-2506-q4_k_m
+    # model: hf.co/t-tech/t-pro-it-1.0-q4_k_m
+    <<: *model_defaults
+
+  # https://huggingface.co/t-tech/T-pro-it-1.0-Q4_K_M-GGUF
+  # https://habr.com/ru/articles/873932/#comment_27868194
+  # 19GB, 33B-q4, 32K, Text
+  # general.architecture: "qwen2"
+  - name: hf.co/t-tech/t-pro-it-1.0-q4_k_m-gguf:q4_k_m
+    model: hf.co/t-tech/t-pro-it-1.0-q4_k_m-gguf:q4_k_m
+    <<: *model_defaults
+
+  - name: codestral:latest 22b
+    model: codestral:latest
+    <<: *model_defaults
+
+  - name: phi4:latest 14b
+    model: phi4:latest
+    <<: *model_defaults
+
+  - name: deepseek-coder-v2:latest 16b
+    model: deepseek-coder-v2:latest
+    <<: *model_defaults
+
+  - name: deepseek-r1-7b
+    model: deepseek-r1:latest
+    <<: *model_defaults
+
+  - name: mixtral:latest
+    model: mixtral:latest
+    <<: *model_defaults
+
+  - name: gemma3:12b-it-qat
+    model: gemma3:12b-it-qat
+    <<: *model_defaults
+
+  - name: gemma3:27b-it-qat
+    model: gemma3:27b-it-qat
+    <<: *model_defaults
+
+  - name: gemma3:latest 4b
+    model: gemma3:latest
+    <<: *model_defaults
+
+  - name: qwen2.5-coder:14b
+    model: qwen2.5-coder:14b
+    <<: *model_defaults
+
+  - name: qwen2.5-coder:1.5b
+    model: qwen2.5-coder:1.5b
+    <<: *model_defaults
+  # roles:
+  #   - autocomplete
+
+  # - name: Nomic Embed
+  #   provider: ollama
+  #   model: nomic-embed-text:latest
+  #   apiBase: "http://192.168.10.27:11434"
+  #   roles:
+  #     - embed
+
+context:
+  - provider: codebase
+  - provider: file
+  - provider: currentFile
+  - provider: open
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: debugger
+    params:
+      stackDepth: 3
+  - provider: folder
+  - provider: web
+    params:
+      n: 5
