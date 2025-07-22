@@ -6,13 +6,14 @@ schema: v1
 
 model_defaults: &model_defaults
   provider: ollama
-  apiBase: 'http://192.168.10.27:11434'
+  apiBase: 'http://192.168.10.222:11434'
   # --- Add this line ---
   baseSystemMessage: |
     Ты — полезный AI-помощник, который всегда отвечает на русском языке.
     При написании кода используй русские комментарии.
     Всегда общайся на русском языке, независимо от запроса.
   # ---------------------
+
 roles_defaults: &roles_defaults
   roles:
     - chat
@@ -23,6 +24,7 @@ roles_defaults: &roles_defaults
     - rerank
 
 models:
+  # потребляет 13.8 ГБ RAM
   # ollama.com/library/qwen3:14b
   # 9.3GB, 14B-q4, 40K, Text
   - name: qwen3:14b
@@ -89,9 +91,7 @@ models:
   #   - autocomplete
 
   # - name: Nomic Embed
-  #   provider: ollama
   #   model: nomic-embed-text:latest
-  #   apiBase: "http://192.168.10.27:11434"
   #   roles:
   #     - embed
 
