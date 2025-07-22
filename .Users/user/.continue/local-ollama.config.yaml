@@ -27,7 +27,6 @@ models:
   # 9.3GB, 14B-q4, 40K, Text
   - name: qwen3:14b
     model: qwen3:14b
-    # model: hf.co/t-tech/t-pro-it-1.0-q4_k_m
     <<: *model_defaults
     # <<: *roles_defaults
 
@@ -37,7 +36,6 @@ models:
   # 15GB, 24B, 128K, Text, Image
   - name: mistral-small3.2:24b-instruct-2506-q4_k_m
     model: mistral-small3.2:24b-instruct-2506-q4_k_m
-    # model: hf.co/t-tech/t-pro-it-1.0-q4_k_m
     <<: *model_defaults
 
   # https://huggingface.co/t-tech/T-pro-it-1.0-Q4_K_M-GGUF
