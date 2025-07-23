@@ -134,6 +134,10 @@
 				"length": 500 // максимальная длина предложений
 			},
 			"chat": {
+				"byok": {
+					// Используйте свой Ollama сервер
+					"ollamaEndpoint": "http://192.168.10.222:11434"
+				},
 				"localeOverride": "ru",
 				"reviewSelection": {
 					"enabled": false
