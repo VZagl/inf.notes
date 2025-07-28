@@ -1,7 +1,7 @@
 ---
 description: Создайте план реализации для новых функций или рефакторинг существующего кода.
 tools: ['codebase', 'fetch', 'findTestFiles', 'githubRepo', 'search', 'usages']
-model: GPT-4.1
+model: GPT-4o
 ---
 
 # Planning mode instructions
