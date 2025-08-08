@@ -108,6 +108,14 @@
 		}
 	},
 
+	// Конфигурация чата (Copilot)
+	"chat": {
+		// Включение/отключение встроенного инструмента списка дел в чате
+		"todoListTool": {
+			"enabled": true
+		}
+	},
+
 	"git.openRepositoryInParentFolders": "never",
 
 	"github": {
@@ -149,7 +157,7 @@
 			"enable": {
 				"*": true,
 				"plaintext": false,
-				"markdown": false,
+				// "markdown": false,
 				"scminput": false,
 				"workspaceFolder": true
 			}
@@ -538,5 +546,6 @@
 			".continue/**/*.yaml"
 		]
 	},
-	"workbench.secondarySideBar.defaultVisibility": "visible"
+	"workbench.secondarySideBar.defaultVisibility": "visible",
+	"chat.todoListTool.enabled": true
 }
