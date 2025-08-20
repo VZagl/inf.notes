@@ -166,6 +166,10 @@
 		]
 	},
 
+	"[foxpro]": {
+		"files.encoding": "windows1251"
+	},
+
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -538,5 +542,7 @@
 			".continue/**/*.yaml"
 		]
 	},
-	"workbench.secondarySideBar.defaultVisibility": "visible"
+	"workbench.secondarySideBar.defaultVisibility": "visible",
+	"files.candidateGuessEncodings": ["windows1251"],
+	"workbench.settings.applyToAllProfiles": ["files.encoding"]
 }
