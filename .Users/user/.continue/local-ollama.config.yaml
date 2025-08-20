@@ -95,6 +95,11 @@ models:
   #   roles:
   #     - embed
 
+embeddingsProvider:
+  provider: ollama
+  model: nomic-embed-text:latest
+  apiBase: 'http://192.168.10.222:11434'
+
 context:
   - provider: codebase
   - provider: file
