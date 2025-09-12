@@ -182,6 +182,10 @@
 		]
 	},
 
+	"[foxpro]": {
+		"files.encoding": "windows1251"
+	},
+
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -555,6 +559,7 @@
 		]
 	},
 	"workbench.secondarySideBar.defaultVisibility": "visible",
+	"files.candidateGuessEncodings": ["windows1251"],
 	"chat.todoListTool.enabled": true,
 	"workbench.settings.applyToAllProfiles": ["chat.useAgentsMdFile"]
 }
