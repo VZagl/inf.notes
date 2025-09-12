@@ -110,6 +110,14 @@
 
 	// Конфигурация чата (Copilot)
 	"chat": {
+		/*
+			August 2025 (version 1.104)
+			Support for AGENTS.md files (Experimental)
+			An AGENTS.md file lets you provide context and instructions to the agent. Starting from this release, 
+			when you have an AGENTS.md file in your workspace root(s), it is automatically picked up as context 
+			for chat requests. This can be useful for teams that use multiple AI agents.
+		*/
+		"useAgentsMdFile": true,
 		// Включение/отключение встроенного инструмента списка дел в чате
 		"todoListTool": {
 			"enabled": true
@@ -547,5 +555,6 @@
 		]
 	},
 	"workbench.secondarySideBar.defaultVisibility": "visible",
-	"chat.todoListTool.enabled": true
+	"chat.todoListTool.enabled": true,
+	"workbench.settings.applyToAllProfiles": ["chat.useAgentsMdFile"]
 }
