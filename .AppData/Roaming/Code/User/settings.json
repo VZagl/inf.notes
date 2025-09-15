@@ -16,6 +16,12 @@
 	},
 
 	"workbench": {
+		"secondarySideBar": {
+			"defaultVisibility": "visible"
+		},
+		"settings": {
+			"applyToAllProfiles": ["chat.useAgentsMdFile"]
+		},
 		"iconTheme": "vscode-icons",
 		"editor": {
 			"empty": {
@@ -515,9 +521,6 @@
 	// 	}
 	// },
 
-	"workbench.iconTheme": "vscode-icons",
-	"editor.inlineSuggest.suppressSuggestions": true,
-
 	/*
 		Настройки для AI-ассистента AMP от Sourcegraph
 		
@@ -558,8 +561,12 @@
 			".continue/**/*.yaml"
 		]
 	},
-	"workbench.secondarySideBar.defaultVisibility": "visible",
 	"files.candidateGuessEncodings": ["windows1251"],
-	"chat.todoListTool.enabled": true,
-	"workbench.settings.applyToAllProfiles": ["chat.useAgentsMdFile"]
+	"rainbow_csv.highlight_rows": true,
+	"[csv (pipe)]": {
+		"editor.inlayHints.maximumLength": 0
+	},
+	"[csv]": {
+		"editor.inlayHints.maximumLength": 0
+	}
 }
