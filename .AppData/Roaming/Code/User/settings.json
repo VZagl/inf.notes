@@ -78,6 +78,7 @@
 	},
 
 	"editor": {
+		"detectIndentation": false,
 		"fontSize": 18,
 		"codeActionsOnSave": {
 			"source.fixAll": "explicit",
