@@ -479,6 +479,7 @@
 - [Документация Claude Code для VS Code](https://code.claude.com/docs/en/vs-code)
 - [VS Code Marketplace - Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code)
 - [Документация Claude API](https://docs.anthropic.com/)
+- [Как использовать AI-агент Claude Code: советы опытного разработчика](habr.com/ru/companies/otus/articles/929624/)
 
 ## Заключение
 
