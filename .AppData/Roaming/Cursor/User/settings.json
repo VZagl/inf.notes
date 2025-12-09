@@ -1,0 +1,590 @@
+{
+	"telemetry": {
+		"telemetryLevel": "off"
+	},
+
+	"redhat": {
+		"telemetry": {
+			"enabled": false
+		}
+	},
+
+	"dotnetAcquisitionExtension": {
+		"telemetry": {
+			"enabled": false
+		}
+	},
+
+	"workbench": {
+		"secondarySideBar": {
+			"defaultVisibility": "visible"
+		},
+		"settings": {
+			"applyToAllProfiles": ["chat.useAgentsMdFile"]
+		},
+		"iconTheme": "vscode-icons",
+		"editor": {
+			"empty": {
+				"hint": "hidden"
+			},
+			"wrapTabs": true // чтобы отображать вкладки открытых файлов в несколько рядов
+		}
+	},
+
+	"window": {
+		"title": "${activeEditorLong}${separator}${rootName}",
+		"titleSeparator": " — "
+	},
+
+	"vsicons": {
+		"dontShowNewVersionMessage": true
+	},
+
+	"locale": "ru",
+	"liveServer": {
+		"settings": {
+			"donotShowInfoMsg": true
+		}
+	},
+
+	"terminal": {
+		"integrated": {
+			"gpuAcceleration": "off"
+		}
+	},
+
+	// Настройки Git в VS Code
+	"git": {
+		"enableCommitSigning": false,
+		"confirmSync": false,
+		"autofetch": true,
+		"fetchOnPull": true,
+		"commitMessageGeneration": {
+			"enabled": true
+		}
+	},
+
+	// Настройки SCM (Source Control Management)
+	"scm": {
+		"inputFontSize": 14,
+		"defaultViewMode": "tree",
+		"alwaysShowProviders": true,
+		"commitMessageGeneration": {
+			"provider": "copilot" // Включено для Copilot
+			// Отключено для использования только Copilot. Для возврата — раскомментируйте.
+			// "provider": "cody",
+			// "useProjectContext": true
+		}
+	},
+
+	"editor": {
+		"detectIndentation": false,
+		"fontSize": 18,
+		"codeActionsOnSave": {
+			"source.fixAll": "explicit",
+			"source.organizeImports": "never",
+			"source.sortMembers": "explicit"
+		},
+		"guides": {
+			"bracketPairs": true
+		},
+		"tabSize": 2,
+		"insertSpaces": false,
+		"inlineSuggest": {
+			"suppressSuggestions": true
+		},
+		"defaultFormatter": "esbenp.prettier-vscode",
+		"formatOnSave": true,
+		"tabCompletion": "on",
+		"linkedEditing": true,
+		"hover": {
+			"delay": 1000
+		}
+	},
+
+	"files": {
+		"exclude": {
+			"**/.terragrunt-cache": true,
+			"**/.cache": true,
+			"**/node_modules": true,
+			"**/vscode-chat-code-block": true
+		},
+		"eol": "\r\n",
+		"associations": {
+			"*.ts": "typescript"
+		}
+	},
+
+	// Конфигурация чата (Copilot)
+	"chat": {
+		/*
+			August 2025 (version 1.104)
+			Support for AGENTS.md files (Experimental)
+			An AGENTS.md file lets you provide context and instructions to the agent. Starting from this release, 
+			when you have an AGENTS.md file in your workspace root(s), it is automatically picked up as context 
+			for chat requests. This can be useful for teams that use multiple AI agents.
+		*/
+		"useAgentsMdFile": true,
+		// Включение/отключение встроенного инструмента списка дел в чате
+		"todoListTool": {
+			"enabled": true
+		}
+	},
+
+	"git.openRepositoryInParentFolders": "never",
+
+	"github": {
+		"copilot": {
+			"advanced": {
+				"ignoredFiles": {
+					"/node_modules/": true,
+					"/dist/": true,
+					"/build/": true,
+					"/out/": true,
+					"/*.min.js": true,
+					"**/vscode-chat-code-block": true
+				},
+				"ignoredFolders": {
+					"/node_modules": true,
+					"/dist": true,
+					"/build": true,
+					"/out": true,
+					"**/vscode-chat-code-block": true
+				},
+				"debugOverrideEngine": "codegen",
+				"listCount": 5, // увеличьте для больше вариантов
+				"timeoutMs": 8000, // увеличьте таймаут для сложных запросов
+				"length": 500 // максимальная длина предложений
+			},
+			"chat": {
+				"byok": {
+					// Используйте свой Ollama сервер
+					"ollamaEndpoint": "http://192.168.10.222:11434"
+				},
+				"localeOverride": "ru",
+				"reviewSelection": {
+					"enabled": false
+				},
+				"commitMessageGeneration": {
+					"enabled": true // Включено для Copilot
+				}
+			},
+			"enable": {
+				"*": true,
+				"plaintext": false,
+				// "markdown": false,
+				"scminput": false,
+				"workspaceFolder": true
+			}
+		}
+	},
+
+	"indentRainbow": {
+		"updateDelay": 100,
+		"colors": [
+			"rgba(255, 255,  64, 0.05)",
+			"rgba(127, 255, 127, 0.05)",
+			"rgba(255, 127, 255, 0.05)",
+			"rgba( 79, 236, 236, 0.05)"
+		]
+	},
+
+	"[foxpro]": {
+		"files.encoding": "windows1251"
+	},
+
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[bsl]": {
+		"editor.defaultFormatter": "1c-syntax.language-1c-bsl"
+	},
+
+	"search": {
+		"followSymlinks": false
+	},
+
+	"typescript": {
+		"experimental": {
+			"expandableHover": true
+		}
+	},
+
+	"html": {
+		"hover": {
+			"references": false,
+			"documentation": false
+		}
+	},
+
+	"emmet": {
+		"triggerExpansionOnTab": true
+	},
+
+	"prettier": {
+		"useTabs": true
+	},
+
+	"notebook": {
+		"defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"markdown": {
+		"preview": {
+			"breaks": true, // Одиночные переносы строк отображаются как <br>
+			"typographer": true, // Включает типографские улучшения текста
+			"fontSize": 18
+		},
+		"extension": {
+			"preview": {
+				"autoShowPreviewToSide": false // Автоматически открывать предпросмотр Markdown сбоку
+			},
+			// ========== НАСТРОЙКИ TABLE OF CONTENTS ==========
+			"toc": {
+				"enabled": true, // Включить функцию TOC
+				"updateOnSave": true, // Автоматически обновлять содержание при сохранении
+				"levels": "2..6", // Уровни заголовков для включения в содержание (2-6)
+				"orderedList": false, // Использовать маркированный список вместо нумерованного
+				"plaintext": false, // Использовать ссылки вместо обычного текста
+				"slugify": "github", // Стиль генерации якорей (github, gitlab, vscode)
+				"omittedFromToc": {}, // Заголовки, которые нужно исключить из содержания
+				"tabSize": 2, // Размер отступа для вложенных элементов
+				"insertAnchor": false, // Не вставлять якоря в заголовки
+				"githubCompatibility": true, // Совместимость с GitHub Markdown
+				"autoInsert": true // Автоматически вставлять TOC при создании нового файла
+			}
+		}
+	},
+
+	"[markdown]": {
+		// "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+		"editor.tabSize": 2, // Размер отступа для Markdown файлов
+		"editor.insertSpaces": false,
+		"editor.defaultFormatter": "esbenp.prettier-vscode", // Использует Prettier для форматирования Markdown файлов
+		"editor.formatOnSave": true, // Автоматическое форматирование при сохранении
+		"editor.wordWrap": "on", // Включает перенос строк для удобства чтения
+		"editor.renderWhitespace": "all", // Показывает символы пробелов и табуляции
+		"editor.detectIndentation": false, // Отключить автоопределение отступов
+		"editor.quickSuggestions": {
+			// Настройки автодополнения
+			"comments": "on", // Включено в комментариях
+			"strings": "on", // Включено в строках
+			"other": "on" // Включено везде
+		}
+	},
+
+	/*
+		Настройки для AI-ассистента Cody от Sourcegraph
+		
+		ВАЖНО: Контекстные инструкции используют двухуровневую систему
+		
+		Структура конфигурации:
+		1. settings.json - технические настройки VS Code (автодополнение, интерфейс, производительность, commit сообщения)
+		2. .cody/CODY_CONTEXT.md - ОБЩИЕ контекстные инструкции для всех проектов (базовые правила работы)
+		3. .cody/CODY_PROJECT_CONTEXT.md - СПЕЦИФИЧНЫЕ инструкции для конкретного проекта (приоритетные)
+		
+		Преимущества двухуровневой системы:
+		- Единые стандарты кодирования для всех проектов (CODY_CONTEXT.md)
+		- Гибкая настройка под специфику каждого проекта (CODY_PROJECT_CONTEXT.md)
+		- Приоритет проектных правил над общими при конфликте
+		- Упрощение конфигурации VS Code (меньше строк в settings.json)
+		- Лучшая читаемость инструкций в отдельных Markdown файлах
+		- Возможность версионирования правил работы с кодом
+		- Разделение технических настроек и бизнес-логики
+		- Соответствие стандартной структуре .cody директории
+		
+		Порядок применения правил:
+		1. Загружаются общие правила из CODY_CONTEXT.md
+		2. Загружаются специфичные правила из CODY_PROJECT_CONTEXT.md
+		3. При конфликте приоритет у проектных правил
+	*/
+	// Отключено для использования только Copilot. Для возврата — раскомментируйте.
+	// "cody": {
+	// 	// ========== НАСТРОЙКИ АВТОДОПОЛНЕНИЯ ==========
+	// 	"autocomplete": {
+	// 		// Главный переключатель автодополнения кода
+	// 		"enabled": true,
+
+	// 		// Настройки для конкретных языков программирования
+	// 		"languages": {
+	// 			"*": true, // Включено для всех языков по умолчанию
+	// 			"plaintext": false, // Отключено для обычного текста
+	// 			"markdown": false, // Отключено для Markdown файлов
+	// 			"json": true, // Включено для JSON
+	// 			"typescript": true, // Включено для TypeScript
+	// 			"javascript": true // Включено для JavaScript
+	// 		},
+
+	// 		// Задержка в миллисекундах перед показом предложений
+	// 		// Меньше = быстрее отклик, но больше запросов к серверу
+	// 		// Больше = меньше нагрузка, но медленнее отклик
+	// 		"debounceInterval": 75,
+
+	// 		// Максимальное количество предложений автодополнения
+	// 		// Меньше = быстрее загрузка, больше = больше вариантов
+	// 		"maxItems": 3,
+
+	// 		// Минимальная длина текста для начала автодополнения
+	// 		"minTriggerLength": 2
+	// 	},
+
+	// 	// ========== ДЕЙСТВИЯ С КОДОМ ==========
+	// 	// Включает предложения действий с кодом (рефакторинг, исправления)
+	// 	// Появляются как лампочки в редакторе при наведении на код
+	// 	"codeActions.enabled": true,
+
+	// 	// ========== ЛИНЗЫ КОМАНД ==========
+	// 	// Показывает интерактивные ссылки над функциями и классами
+	// 	// Позволяет быстро вызвать Cody для объяснения или рефакторинга
+	// 	"commandCodeLenses": true,
+
+	// 	// ========== НАСТРОЙКИ ЧАТА И COMMIT СООБЩЕНИЙ ==========
+	// 	"chat": {
+	// 		// Язык интерфейса чата
+	// 		"locale": "ru",
+
+	// 		// Настройки генерации commit сообщений
+	// 		"commitMessage": {
+	// 			// Основной язык для сообщений
+	// 			"language": "ru",
+
+	// 			// Инструкции для генерации commit сообщений
+	// 			"instructions": [
+	// 				// === ОСНОВНЫЕ ПРАВИЛА ===
+	// 				"Генерируй commit сообщения ТОЛЬКО на русском языке в повелительном наклонении (инфинитив)",
+	// 				"Формат: 'Действие описание' (БЕЗ двоеточия, БЕЗ точки в конце)",
+	// 				"Максимум 50 символов для заголовка",
+
+	// 				// === ДЕЙСТВИЯ ===
+	// 				"Используй действия: добавить, исправить, обновить, удалить, рефакторить, оптимизировать, документировать, тестировать, настроить, стилизовать",
+
+	// 				// === ЗАПРЕТЫ ===
+	// 				"НЕ используй префиксы feat:, fix:, docs:, chore:",
+	// 				"НЕ используй повелительное наклонение с 'й' (добавь, исправь)",
+	// 				"НЕ используй прошедшее время (добавил, исправил)",
+
+	// 				// === АНАЛИЗ ИЗМЕНЕНИЙ ===
+	// 				"Анализируй git diff и структуру проекта для понимания технологического стека",
+	// 				"Адаптируй терминологию под используемые технологии",
+	// 				"Для новых файлов: 'Добавить [тип] [название]'",
+	// 				"Для исправлений: 'Исправить [проблему] в [компоненте]'",
+	// 				"Для рефакторинга: 'Рефакторить [компонент] для [цели]'",
+
+	// 				// === ТЕХНОЛОГИИ (примеры) ===
+	// 				"Для React/React Native: 'Добавить компонент UserProfile'",
+	// 				"Для API: 'Исправить валидацию в POST /users'",
+	// 				"Для базы данных: 'Добавить миграцию для таблицы users'",
+	// 				"Для конфигурации: 'Настроить webpack для production'",
+	// 				"Для стилей: 'Обновить CSS для мобильных устройств'",
+
+	// 				// === ПРИМЕРЫ ===
+	// 				"Примеры: 'Добавить валидацию email', 'Исправить ошибку деления на ноль', 'Обновить зависимости проекта'"
+	// 			],
+
+	// 			// Автоматически включать контекстные файлы при генерации commit
+	// 			"includeContext": true,
+
+	// 			// Файлы с дополнительными инструкциями (ОБНОВЛЕНО: новый путь)
+	// 			"contextFiles": [
+	// 				".cody/CODY_CONTEXT.md",
+	// 				".cody/CODY_PROJECT_CONTEXT.md"
+	// 			],
+
+	// 			// Анализировать изменения в коде для лучшего понимания
+	// 			"analyzeChanges": true,
+
+	// 			// Максимальная длина сообщения
+	// 			"maxLength": 50,
+
+	// 			// Включить детальное описание (если нужно)
+	// 			"includeDescription": false
+	// 		},
+
+	// 		// Максимальное количество сообщений в истории чата
+	// 		"maxHistoryLength": 100,
+
+	// 		// Включить дополнительные вопросы после ответов
+	// 		"followUpQuestions": true,
+
+	// 		// Автоматически загружать контекстные инструкции
+	// 		"autoLoadContext": true,
+
+	// 		// Префикс для каждого запроса (будет добавляться автоматически)
+	// 		"systemPrompt": "Используй инструкции из файлов .cody/CODY_CONTEXT.md (общие правила) и .cody/CODY_PROJECT_CONTEXT.md (правила проекта). При конфликте настроек приоритет у правил проекта из CODY_PROJECT_CONTEXT.md.",
+
+	// 		// Файлы с инструкциями, которые нужно читать перед каждым ответом
+	// 		"instructionFiles": [
+	// 			".cody/CODY_CONTEXT.md",
+	// 			".cody/CODY_PROJECT_CONTEXT.md"
+	// 		]
+	// 	},
+
+	// 	// Настройки для интеграции с Git
+	// 	"git": {
+	// 		"commitMessageGeneration": {
+	// 			"enabled": true,
+	// 			"useContextFiles": true,
+	// 			"followProjectRules": true
+	// 		}
+	// 	},
+
+	// 	// ========== НАСТРОЙКИ ПРОИЗВОДИТЕЛЬНОСТИ ==========
+	// 	"performance": {
+	// 		// Максимальное время ожидания ответа от сервера (в миллисекундах)
+	// 		"timeout": 10000,
+
+	// 		// Максимальное количество одновременных запросов
+	// 		"maxConcurrentRequests": 3,
+
+	// 		// Размер кэша для хранения ответов
+	// 		"cacheSize": 100
+	// 	},
+
+	// 	// ========== ПРИВАТНОСТЬ ==========
+	// 	"telemetry": {
+	// 		// Уровень сбора телеметрии
+	// 		// "off" = полностью отключено (соответствует вашим настройкам)
+	// 		// "basic" = только основная статистика
+	// 		// "full" = полная телеметрия
+	// 		"level": "off"
+	// 	},
+
+	// 	// ========== ОТЛАДКА И ДИАГНОСТИКА ==========
+	// 	"debug": {
+	// 		// Включает режим отладки для диагностики проблем
+	// 		// Полезно если Cody работает некорректно
+	// 		"enabled": false,
+
+	// 		// Подробное логирование всех операций
+	// 		// Создает много логов - использовать только при необходимости
+	// 		"verbose": false
+	// 	},
+
+	// 	// ========== ЭКСПЕРИМЕНТАЛЬНЫЕ ФУНКЦИИ ==========
+	// 	"experimental": {
+	// 		// Улучшенное понимание контекста кода
+	// 		"enhancedContext": true,
+
+	// 		// Предложения на основе истории использования
+	// 		"historySuggestions": true,
+
+	// 		// Интеграция с системой контроля версий
+	// 		"gitIntegration": true,
+
+	// 		// Кэширование ответов для ускорения работы
+	// 		"responseCache": true,
+
+	// 		// Экспериментальная генерация commit сообщений
+	// 		"commitMessageGeneration": true,
+
+	// 		// Улучшенный анализ git diff для commit сообщений
+	// 		"enhancedGitAnalysis": true,
+
+	// 		// Контекстно-зависимые commit сообщения
+	// 		"contextAwareCommits": true,
+
+	// 		// Автоматическое включение файлов проекта в контекст для commit
+	// 		"autoIncludeProjectContext": true
+	// 	},
+
+	// 	// Автоматическое включение контекстных файлов
+	// 	"context": {
+	// 		// Автоматически включать файлы с инструкциями
+	// 		"includeInferredRepository": true,
+
+	// 		// Файлы, которые всегда должны быть включены в контекст
+	// 		"alwaysIncludeFiles": [
+	// 			".cody/CODY_CONTEXT.md",
+	// 			".cody/CODY_PROJECT_CONTEXT.md",
+	// 			"README.md"
+	// 		],
+
+	// 		// Максимальное количество файлов в контексте
+	// 		"maxFiles": 20,
+
+	// 		// Автоматически искать файлы с инструкциями
+	// 		"autoIncludeInstructions": true
+	// 	}
+	// },
+
+	/*
+		Настройки для AI-ассистента AMP от Sourcegraph
+		
+		AMP (Amplified Code) - это AI-помощник для разработки от компании Sourcegraph,
+		который предоставляет расширенные возможности для работы с кодом.
+	*/
+	// Отключено для использования только Copilot. Для возврата — раскомментируйте.
+	// "amp": {
+	// 	// URL-адрес для подключения к сервису AMP
+	// 	// По умолчанию используется официальный сервер Sourcegraph
+	// 	"url": "https://ampcode.com/",
+
+	// 	// Настройки пользовательского интерфейса
+	// 	"ui": {
+	// 		// Уровень масштабирования интерфейса AMP
+	// 		// 1.2 = увеличение на 20% для лучшей читаемости
+	// 		"zoomLevel": 1.2
+	// 	},
+
+	// 	// Отключение уведомлений от AMP для минимизации отвлечений
+	// 	// Соответствует общей политике отключения телеметрии в конфигурации
+	// 	"notifications.enabled": false,
+
+	// 	// Список разрешенных команд для выполнения через AMP
+	// 	// "timeout" - команда для управления таймаутами операций
+	// 	// Ограниченный список команд повышает безопасность
+	// 	"commands.allowlist": ["timeout"]
+	// },
+
+	/*
+		Настройки для AI-ассистента Continue
+
+		Настройки схем YAML для валидации конфигурационных файлов
+		Определяет соответствие между JSON схемами и YAML файлами для автодополнения и проверки синтаксиса
+	*/
+	"yaml.schemas": {
+		"c:\\Users\\prof\\.vscode\\extensions\\continue.continue-1.0.19-win32-x64\\config-yaml-schema.json": [
+			".continue/**/*.yaml"
+		]
+	},
+	"files.candidateGuessEncodings": ["windows1251"],
+	"rainbow_csv.highlight_rows": true,
+	"[csv (pipe)]": {
+		"editor.inlayHints.maximumLength": 0
+	},
+	"[csv]": {
+		"editor.inlayHints.maximumLength": 0
+	},
+	"diffEditor.ignoreTrimWhitespace": true,
+	"chat.tools.terminal.autoApprove": {
+		"git rev-parse": true,
+		"git --no-pager diff --staged": {
+			"approve": true,
+			"matchCommandLine": true
+		}
+	},
+	"[dockercompose]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"[github-actions-workflow]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	}
+}
