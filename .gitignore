@@ -1,4 +1,4 @@
-# Logs
+# Логи
 logs
 *.log
 npm-debug.log*
@@ -7,19 +7,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency `Node.js` directories and lock files
+# Каталоги зависимостей `Node.js`
 node_modules
-pnpm-lock.yaml
 
-# Editor directories and files
+# Каталоги результата сборки
+dist
+dist-ssr
+
+# Каталоги и файлы редакторов
+# .vscode/*
+!.vscode/extensions.json
 .idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# QODO AI assistant history
-.qodo
-
-# Temporary files
+# Временные файлы
 *.~
 
 # Конфиденциальные файлы и переменные окружения
 /.env
+*.local
