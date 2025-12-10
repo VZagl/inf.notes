@@ -15,21 +15,11 @@
 		}
 	},
 
-	"workbench": {
-		"secondarySideBar": {
-			"defaultVisibility": "visible"
-		},
-		"settings": {
-			"applyToAllProfiles": ["chat.useAgentsMdFile"]
-		},
-		"iconTheme": "vscode-icons",
-		"editor": {
-			"empty": {
-				"hint": "hidden"
-			},
-			"wrapTabs": true // чтобы отображать вкладки открытых файлов в несколько рядов
-		}
-	},
+	"workbench.secondarySideBar.defaultVisibility": "visible",
+	"workbench.settings.applyToAllProfiles": ["chat.useAgentsMdFile"],
+	"workbench.iconTheme": "vscode-icons",
+	"workbench.editor.empty.hint": "hidden",
+	"workbench.editor.wrapTabs": true, // чтобы отображать вкладки открытых файлов в несколько рядов
 
 	"window": {
 		"title": "${activeEditorLong}${separator}${rootName}",
@@ -244,32 +234,22 @@
 		"defaultFormatter": "esbenp.prettier-vscode"
 	},
 
-	"markdown": {
-		"preview": {
-			"breaks": true, // Одиночные переносы строк отображаются как <br>
-			"typographer": true, // Включает типографские улучшения текста
-			"fontSize": 18
-		},
-		"extension": {
-			"preview": {
-				"autoShowPreviewToSide": false // Автоматически открывать предпросмотр Markdown сбоку
-			},
-			// ========== НАСТРОЙКИ TABLE OF CONTENTS ==========
-			"toc": {
-				"enabled": true, // Включить функцию TOC
-				"updateOnSave": true, // Автоматически обновлять содержание при сохранении
-				"levels": "2..6", // Уровни заголовков для включения в содержание (2-6)
-				"orderedList": false, // Использовать маркированный список вместо нумерованного
-				"plaintext": false, // Использовать ссылки вместо обычного текста
-				"slugify": "github", // Стиль генерации якорей (github, gitlab, vscode)
-				"omittedFromToc": {}, // Заголовки, которые нужно исключить из содержания
-				"tabSize": 2, // Размер отступа для вложенных элементов
-				"insertAnchor": false, // Не вставлять якоря в заголовки
-				"githubCompatibility": true, // Совместимость с GitHub Markdown
-				"autoInsert": true // Автоматически вставлять TOC при создании нового файла
-			}
-		}
-	},
+	"markdown.preview.breaks": true, // Одиночные переносы строк отображаются как <br>
+	"markdown.preview.typographer": true, // Включает типографские улучшения текста
+	"markdown.preview.fontSize": 18,
+	"markdown.extension.preview.autoShowPreviewToSide": false, // Автоматически открывать предпросмотр Markdown сбоку
+	// ========== НАСТРОЙКИ TABLE OF CONTENTS ==========
+	"markdown.extension.toc.enabled": true, // Включить функцию TOC
+	"markdown.extension.toc.updateOnSave": true, // Автоматически обновлять содержание при сохранении
+	"markdown.extension.toc.levels": "2..6", // Уровни заголовков для включения в содержание (2-6)
+	"markdown.extension.toc.orderedList": false, // Использовать маркированный список вместо нумерованного
+	"markdown.extension.toc.plaintext": false, // Использовать ссылки вместо обычного текста
+	"markdown.extension.toc.slugify": "github", // Стиль генерации якорей (github, gitlab, vscode)
+	"markdown.extension.toc.omittedFromToc": {}, // Заголовки, которые нужно исключить из содержания
+	"markdown.extension.toc.tabSize": 2, // Размер отступа для вложенных элементов
+	"markdown.extension.toc.insertAnchor": false, // Не вставлять якоря в заголовки
+	"markdown.extension.toc.githubCompatibility": true, // Совместимость с GitHub Markdown
+	"markdown.extension.toc.autoInsert": true, // Автоматически вставлять TOC при создании нового файла
 
 	"[markdown]": {
 		// "editor.defaultFormatter": "yzhang.markdown-all-in-one",
