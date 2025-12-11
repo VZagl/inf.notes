@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "readme.md",
 	"scripts": {
-		"preinstall": "npx only-allow pnpm"
+		"preinstall": "npx only-allow pnpm",
+		"format": "prettier --write \"**/*.md\""
 	},
 	"keywords": [],
 	"author": "Zahliada VM",
