@@ -27,6 +27,7 @@
 ### Использование MCP-серверов
 
 - Always use context7 when I need code generation, setup or configuration steps, or library/API documentation. This means you should automatically use the Context7 MCP tools to resolve library id and get library docs without me having to explicitly ask.
+- When the user explicitly writes "use sequential-thinking", the assistant must follow a structured, step-by-step reasoning and planning process before generating or editing code, and clearly reflect this process in its response.
 
 ### Подтверждение изменений
 
