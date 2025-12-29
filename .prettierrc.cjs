@@ -8,7 +8,7 @@ module.exports = {
 	bracketSpacing: true,
 	bracketSameLine: false,
 	arrowParens: 'always',
-	printWidth: ['warn', 140, 2],
+	printWidth: 140,
 	semi: true,
 	embeddedLanguageFormatting: 'auto',
 	plugins: [
