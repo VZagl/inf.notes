@@ -251,7 +251,7 @@
   const server = setupServer(
   	rest.get('/api/user', (req, res, ctx) => {
   		return res(ctx.json({ username: 'admin' }));
-  	})
+  	}),
   );
 
   beforeAll(() => server.listen());

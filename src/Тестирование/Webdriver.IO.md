@@ -347,7 +347,7 @@ describe('File upload', () => {
 			{
 				timeout: 10000,
 				timeoutMsg: 'Upload success message not displayed',
-			}
+			},
 		);
 
 		await expect($('.upload-success')).toHaveText('File uploaded successfully');
@@ -645,10 +645,7 @@ describe('Database integration', () => {
 		await expect($('.success-message')).toBeDisplayed();
 
 		// Проверяем в базе данных
-		const [rows] = await connection.execute(
-			'SELECT * FROM users WHERE username = ?',
-			['newuser']
-		);
+		const [rows] = await connection.execute('SELECT * FROM users WHERE username = ?', ['newuser']);
 
 		expect(rows).toHaveLength(1);
 		expect(rows[0].email).toBe('newuser@example.com');
@@ -961,10 +958,7 @@ describe('Shadow DOM testing', () => {
 
 		cy.get('my-custom-element').shadow().find('button').click();
 
-		cy.get('my-custom-element')
-			.shadow()
-			.find('.result')
-			.should('contain.text', 'test input');
+		cy.get('my-custom-element').shadow().find('.result').should('contain.text', 'test input');
 	});
 });
 ```
@@ -993,7 +987,7 @@ describe('WebSocket testing', () => {
 			{
 				timeout: 5000,
 				timeoutMsg: 'Message not received via WebSocket',
-			}
+			},
 		);
 
 		const lastMessage = await $('.message:last-child .text');
@@ -1017,10 +1011,7 @@ describe('WebSocket testing', () => {
 
 		// Ждем появления сообщения в чате
 		cy.get('.message', { timeout: 5000 }).should('have.length.at.least', 1);
-		cy.get('.message:last-child .text').should(
-			'contain.text',
-			'Hello WebSocket!'
-		);
+		cy.get('.message:last-child .text').should('contain.text', 'Hello WebSocket!');
 	});
 
 	it('should mock WebSocket connection', () => {
@@ -1190,10 +1181,7 @@ export default class CustomReporter extends WDIOReporter {
 			details: results,
 		};
 
-		require('fs').writeFileSync(
-			'./test-results/custom-report.json',
-			JSON.stringify(report, null, 2)
-		);
+		require('fs').writeFileSync('./test-results/custom-report.json', JSON.stringify(report, null, 2));
 	}
 }
 ```
@@ -1285,10 +1273,7 @@ export default defineConfig({
 						generatedAt: new Date().toISOString(),
 					};
 
-					require('fs').writeFileSync(
-						'./cypress/reports/user-journey.json',
-						JSON.stringify(report, null, 2)
-					);
+					require('fs').writeFileSync('./cypress/reports/user-journey.json', JSON.stringify(report, null, 2));
 
 					return report;
 				},
@@ -1342,7 +1327,7 @@ class LoginPage extends Page {
 			{
 				timeout: 10000,
 				timeoutMsg: 'Login result not displayed',
-			}
+			},
 		);
 	}
 
@@ -1419,9 +1404,7 @@ class LoginPage {
 
 	waitForLoginResult() {
 		// В Cypress автоматическое ожидание
-		cy.get('.welcome-message, .error-message', { timeout: 10000 }).should(
-			'be.visible'
-		);
+		cy.get('.welcome-message, .error-message', { timeout: 10000 }).should('be.visible');
 		return this;
 	}
 
@@ -1496,9 +1479,7 @@ describe('Login functionality with Page Objects', () => {
 	});
 
 	it('should show error for invalid credentials', () => {
-		LoginPage.visit()
-			.login('invalid', 'invalid')
-			.verifyLoginError('Invalid credentials');
+		LoginPage.visit().login('invalid', 'invalid').verifyLoginError('Invalid credentials');
 	});
 });
 ```
@@ -1616,9 +1597,7 @@ describe('Data-driven testing', () => {
 		Object.entries(users).forEach(([userType, userData]) => {
 			cy.log(`Testing login for ${userType}`);
 
-			LoginPage.visit()
-				.login(userData.username, userData.password)
-				.verifyLoginSuccess();
+			LoginPage.visit().login(userData.username, userData.password).verifyLoginSuccess();
 
 			// Logout для следующей итерации
 			cy.get('#logout-button').click();
@@ -1761,10 +1740,7 @@ export const config = {
 		{
 			browserName: 'chrome',
 			'goog:chromeOptions': {
-				args: [
-					'--disable-web-security',
-					'--disable-features=VizDisplayCompositor',
-				],
+				args: ['--disable-web-security', '--disable-features=VizDisplayCompositor'],
 			},
 		},
 	],
@@ -1777,11 +1753,7 @@ export const config = {
 	logLevel: 'debug',
 
 	// Сохранение скриншотов при ошибках
-	afterTest: async function (
-		test,
-		context,
-		{ error, result, duration, passed, retries }
-	) {
+	afterTest: async function (test, context, { error, result, duration, passed, retries }) {
 		if (!passed) {
 			await browser.saveScreenshot(`./screenshots/error-${test.title}.png`);
 		}
@@ -1997,9 +1969,7 @@ describe('Monitored tests', () => {
 
 		// Измеряем время загрузки страницы
 		cy.window().then((win) => {
-			const loadTime =
-				win.performance.timing.loadEventEnd -
-				win.performance.timing.navigationStart;
+			const loadTime = win.performance.timing.loadEventEnd - win.performance.timing.navigationStart;
 
 			cy.task('sendMetric', {
 				name: 'cypress.page.load_time',
@@ -2128,14 +2098,10 @@ export const getSecureCredentials = () => {
 };
 
 // Команда для безопасного ввода пароля
-Cypress.Commands.add(
-	'secureType',
-	{ prevSubject: 'element' },
-	(subject, text) => {
-		// Отключаем логирование для паролей
-		cy.wrap(subject, { log: false }).type(text, { log: false });
-	}
-);
+Cypress.Commands.add('secureType', { prevSubject: 'element' }, (subject, text) => {
+	// Отключаем логирование для паролей
+	cy.wrap(subject, { log: false }).type(text, { log: false });
+});
 ```
 
 javascript:cypress/e2e/secure-login.cy.js
@@ -2322,9 +2288,7 @@ describe('Accessibility testing', () => {
 	it('should have no accessibility violations on homepage', async () => {
 		await browser.url('/');
 
-		const results = await new AxeBuilder({ driver: browser })
-			.withTags(['wcag2a', 'wcag2aa'])
-			.analyze();
+		const results = await new AxeBuilder({ driver: browser }).withTags(['wcag2a', 'wcag2aa']).analyze();
 
 		expect(results.violations).toHaveLength(0);
 	});
@@ -2360,9 +2324,7 @@ describe('Accessibility testing', () => {
 		expect(await passwordInput.getAttribute('aria-label')).toBe('Password');
 
 		const submitButton = await $('#submit');
-		expect(await submitButton.getAttribute('aria-describedby')).toBe(
-			'submit-help'
-		);
+		expect(await submitButton.getAttribute('aria-describedby')).toBe('submit-help');
 	});
 
 	it('should support screen readers', async () => {
@@ -2462,10 +2424,7 @@ describe('Accessibility testing', () => {
 		// Тестируем объявление изменений
 		cy.get('#load-content').click();
 
-		cy.get('[aria-live="polite"]').should(
-			'contain.text',
-			'Content loaded successfully'
-		);
+		cy.get('[aria-live="polite"]').should('contain.text', 'Content loaded successfully');
 	});
 
 	it('should have proper form labels and validation', () => {
@@ -2478,9 +2437,7 @@ describe('Accessibility testing', () => {
 		// Проверяем сообщения об ошибках
 		cy.get('#submit').click();
 
-		cy.get('#name-error')
-			.should('be.visible')
-			.and('have.attr', 'role', 'alert');
+		cy.get('#name-error').should('be.visible').and('have.attr', 'role', 'alert');
 
 		cy.get('#name')
 			.should('have.attr', 'aria-describedby', 'name-error')

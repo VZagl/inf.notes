@@ -40,21 +40,25 @@ After determining complexity level, load:
 ## Workflow
 
 1. **Platform Detection**
+
    - Detect operating system
    - Adapt commands for platform
    - Set path separators
 
 2. **Memory Bank Verification**
+
    - Check if `memory-bank/` directory exists
    - If not, create Memory Bank structure
    - Verify essential files exist
 
 3. **Task Analysis**
+
    - Read `memory-bank/tasks.md` if exists
    - Analyze task requirements
    - Determine complexity level (1-4)
 
 4. **Route Based on Complexity**
+
    - **Level 1:** Continue in VAN mode, proceed to implementation
    - **Level 2-4:** Transition to `/plan` command
 

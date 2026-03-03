@@ -58,17 +58,20 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
 ## Workflow
 
 1. **Verify Prerequisites**
+
    - Check `memory-bank/tasks.md` for planning completion
    - For Level 3-4: Verify creative phase documents exist
    - Review implementation plan
 
 2. **Determine Complexity Level**
+
    - Read complexity level from `memory-bank/tasks.md`
    - Load appropriate workflow rules
 
 3. **Execute Implementation**
 
    **Level 1 (Quick Bug Fix):**
+
    - Review bug report
    - Examine relevant code
    - Implement targeted fix
@@ -77,6 +80,7 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
    - Update `memory-bank/tasks.md`
 
    **Level 2 (Simple Enhancement):**
+
    - Review build plan
    - Examine relevant code areas
    - Implement changes sequentially
@@ -85,6 +89,7 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
    - Update `memory-bank/tasks.md`
 
    **Level 3-4 (Feature/System):**
+
    - Review plan and creative decisions
    - Create directory structure
    - Build in planned phases
@@ -97,6 +102,7 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
    - Update `memory-bank/tasks.md` and `memory-bank/progress.md`
 
 4. **Test-Driven Phase Completion**
+
    - Extract success criteria from current phase in `memory-bank/tasks.md`
    - Write test cases covering each success criterion
    - Execute all tests
@@ -105,6 +111,7 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
    - If tests fail: fix implementation, re-run tests, repeat until all pass
 
 5. **Command Execution**
+
    - Document all commands executed
    - Document results and observations
    - Follow platform-specific command guidelines

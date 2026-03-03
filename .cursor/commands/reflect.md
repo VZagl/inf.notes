@@ -64,10 +64,12 @@ Load: .cursor/rules/isolation_rules/Level4/reflection-comprehensive.mdc
 ## Workflow
 
 1. **Verify Implementation Complete**
+
    - Check `memory-bank/tasks.md` for implementation completion
    - If not complete, return to `/build` command
 
 2. **Review Implementation**
+
    - Compare implementation against original plan
    - Review creative phase decisions (Level 3-4)
    - Review code changes and testing
@@ -75,16 +77,19 @@ Load: .cursor/rules/isolation_rules/Level4/reflection-comprehensive.mdc
 3. **Document Reflection**
 
    **Level 1:**
+
    - Quick review of bug fix
    - Document solution
 
    **Level 2:**
+
    - Review enhancement
    - Document what went well
    - Document challenges
    - Document lessons learned
 
    **Level 3-4:**
+
    - Comprehensive review of implementation
    - Compare against original plan
    - Document what went well
@@ -94,6 +99,7 @@ Load: .cursor/rules/isolation_rules/Level4/reflection-comprehensive.mdc
    - Document technical improvements
 
 4. **Create Reflection Document**
+
    - Create `memory-bank/reflection/reflection-[task_id].md`
    - Structure: Summary, What Went Well, Challenges, Lessons Learned, Process Improvements, Technical Improvements, Next Steps
 

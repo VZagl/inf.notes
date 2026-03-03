@@ -67,6 +67,7 @@ Load: .cursor/rules/isolation_rules/Level4/archive-comprehensive.mdc
 ## Workflow
 
 1. **Verify Reflection Complete**
+
    - Check that `memory-bank/reflection/reflection-[task_id].md` exists
    - Verify reflection is complete
    - If not complete, return to `/reflect` command
@@ -74,15 +75,18 @@ Load: .cursor/rules/isolation_rules/Level4/archive-comprehensive.mdc
 2. **Create Archive Document**
 
    **Level 1:**
+
    - Create quick summary
    - Update `memory-bank/tasks.md` marking task complete
 
    **Level 2:**
+
    - Create basic archive document
    - Document changes made
    - Update `memory-bank/tasks.md` and `memory-bank/progress.md`
 
    **Level 3-4:**
+
    - Create comprehensive archive document
    - Include: Metadata, Summary, Requirements, Implementation details, Testing, Lessons Learned, References
    - Archive creative phase documents

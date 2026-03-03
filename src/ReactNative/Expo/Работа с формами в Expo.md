@@ -58,19 +58,13 @@ import * as Yup from 'yup';
 import { Checkbox } from 'expo-elements';
 
 const validationSchema = Yup.object().shape({
-	name: Yup.string()
-		.min(2, 'Имя должно содержать минимум 2 символа')
-		.required('Обязательное поле'),
+	name: Yup.string().min(2, 'Имя должно содержать минимум 2 символа').required('Обязательное поле'),
 	email: Yup.string().email('Некорректный email').required('Обязательное поле'),
-	password: Yup.string()
-		.min(6, 'Пароль должен содержать минимум 6 символов')
-		.required('Обязательное поле'),
+	password: Yup.string().min(6, 'Пароль должен содержать минимум 6 символов').required('Обязательное поле'),
 	confirmPassword: Yup.string()
 		.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать')
 		.required('Обязательное поле'),
-	agreement: Yup.boolean()
-		.oneOf([true], 'Необходимо принять правила')
-		.required('Обязательное поле'),
+	agreement: Yup.boolean().oneOf([true], 'Необходимо принять правила').required('Обязательное поле'),
 });
 
 export default function FormikForm() {
@@ -86,15 +80,7 @@ export default function FormikForm() {
 			validationSchema={validationSchema}
 			onSubmit={(values) => alert(JSON.stringify(values))}
 		>
-			{({
-				handleChange,
-				handleBlur,
-				handleSubmit,
-				values,
-				errors,
-				touched,
-				setFieldValue,
-			}) => (
+			{({ handleChange, handleBlur, handleSubmit, values, errors, touched, setFieldValue }) => (
 				<View style={{ padding: 20 }}>
 					<TextInput
 						placeholder='Имя'
@@ -103,9 +89,7 @@ export default function FormikForm() {
 						value={values.name}
 						style={styles.input}
 					/>
-					{touched.name && errors.name && (
-						<Text style={styles.errorText}>{errors.name}</Text>
-					)}
+					{touched.name && errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
 
 					<TextInput
 						placeholder='Email'
@@ -115,9 +99,7 @@ export default function FormikForm() {
 						keyboardType='email-address'
 						style={styles.input}
 					/>
-					{touched.email && errors.email && (
-						<Text style={styles.errorText}>{errors.email}</Text>
-					)}
+					{touched.email && errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
 
 					<TextInput
 						placeholder='Пароль'
@@ -127,9 +109,7 @@ export default function FormikForm() {
 						secureTextEntry
 						style={styles.input}
 					/>
-					{touched.password && errors.password && (
-						<Text style={styles.errorText}>{errors.password}</Text>
-					)}
+					{touched.password && errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
 
 					<TextInput
 						placeholder='Подтвердите пароль'
@@ -144,13 +124,8 @@ export default function FormikForm() {
 					)}
 
 					<View style={styles.checkboxContainer}>
-						<Checkbox
-							value={values.agreement}
-							onValueChange={(value) => setFieldValue('agreement', value)}
-						/>
-						<View
-							style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: 8 }}
-						>
+						<Checkbox value={values.agreement} onValueChange={(value) => setFieldValue('agreement', value)} />
+						<View style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: 8 }}>
 							<Text>Я согласен с </Text>
 							<TouchableOpacity
 								onPress={() => {
@@ -161,9 +136,7 @@ export default function FormikForm() {
 							</TouchableOpacity>
 						</View>
 					</View>
-					{touched.agreement && errors.agreement && (
-						<Text style={styles.errorText}>{errors.agreement}</Text>
-					)}
+					{touched.agreement && errors.agreement && <Text style={styles.errorText}>{errors.agreement}</Text>}
 
 					<Button onPress={handleSubmit} title='Отправить' />
 				</View>
