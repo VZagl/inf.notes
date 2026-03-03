@@ -1,56 +1,56 @@
 {
 	"telemetry": {
-		"telemetryLevel": "off"
+		"telemetryLevel": "off",
 	},
 
 	"redhat": {
 		"telemetry": {
-			"enabled": false
-		}
+			"enabled": false,
+		},
 	},
 
 	"dotnetAcquisitionExtension": {
 		"telemetry": {
-			"enabled": false
-		}
+			"enabled": false,
+		},
 	},
 
 	"workbench": {
 		"secondarySideBar": {
-			"defaultVisibility": "visible"
+			"defaultVisibility": "visible",
 		},
 		"settings": {
-			"applyToAllProfiles": ["chat.useAgentsMdFile"]
+			"applyToAllProfiles": ["chat.useAgentsMdFile"],
 		},
 		"iconTheme": "vscode-icons",
 		"editor": {
 			"empty": {
-				"hint": "hidden"
+				"hint": "hidden",
 			},
-			"wrapTabs": true // чтобы отображать вкладки открытых файлов в несколько рядов
-		}
+			"wrapTabs": true, // чтобы отображать вкладки открытых файлов в несколько рядов
+		},
 	},
 
 	"window": {
 		"title": "${activeEditorLong}${separator}${rootName}",
-		"titleSeparator": " — "
+		"titleSeparator": " — ",
 	},
 
 	"vsicons": {
-		"dontShowNewVersionMessage": true
+		"dontShowNewVersionMessage": true,
 	},
 
 	"locale": "ru",
 	"liveServer": {
 		"settings": {
-			"donotShowInfoMsg": true
-		}
+			"donotShowInfoMsg": true,
+		},
 	},
 
 	"terminal": {
 		"integrated": {
-			"gpuAcceleration": "off"
-		}
+			"gpuAcceleration": "off",
+		},
 	},
 
 	// Настройки Git в VS Code
@@ -60,8 +60,8 @@
 		"autofetch": true,
 		"fetchOnPull": true,
 		"commitMessageGeneration": {
-			"enabled": true
-		}
+			"enabled": true,
+		},
 	},
 
 	// Настройки SCM (Source Control Management)
@@ -70,11 +70,11 @@
 		"defaultViewMode": "tree",
 		"alwaysShowProviders": true,
 		"commitMessageGeneration": {
-			"provider": "copilot" // Включено для Copilot
+			"provider": "copilot", // Включено для Copilot
 			// Отключено для использования только Copilot. Для возврата — раскомментируйте.
 			// "provider": "cody",
 			// "useProjectContext": true
-		}
+		},
 	},
 
 	"editor.wordWrap": "on",
@@ -84,23 +84,23 @@
 		"codeActionsOnSave": {
 			"source.fixAll": "explicit",
 			"source.organizeImports": "never",
-			"source.sortMembers": "explicit"
+			"source.sortMembers": "explicit",
 		},
 		"guides": {
-			"bracketPairs": true
+			"bracketPairs": true,
 		},
 		"tabSize": 2,
 		"insertSpaces": false,
 		"inlineSuggest": {
-			"suppressSuggestions": true
+			"suppressSuggestions": true,
 		},
 		"defaultFormatter": "esbenp.prettier-vscode",
 		"formatOnSave": true,
 		"tabCompletion": "on",
 		"linkedEditing": true,
 		"hover": {
-			"delay": 1000
-		}
+			"delay": 1000,
+		},
 	},
 
 	"files": {
@@ -108,12 +108,12 @@
 			"**/.terragrunt-cache": true,
 			"**/.cache": true,
 			"**/node_modules": true,
-			"**/vscode-chat-code-block": true
+			"**/vscode-chat-code-block": true,
 		},
 		"eol": "\r\n",
 		"associations": {
-			"*.ts": "typescript"
-		}
+			"*.ts": "typescript",
+		},
 	},
 
 	// Конфигурация чата (Copilot)
@@ -128,8 +128,8 @@
 		"useAgentsMdFile": true,
 		// Включение/отключение встроенного инструмента списка дел в чате
 		"todoListTool": {
-			"enabled": true
-		}
+			"enabled": true,
+		},
 	},
 
 	"git.openRepositoryInParentFolders": "never",
@@ -143,41 +143,41 @@
 					"/build/": true,
 					"/out/": true,
 					"/*.min.js": true,
-					"**/vscode-chat-code-block": true
+					"**/vscode-chat-code-block": true,
 				},
 				"ignoredFolders": {
 					"/node_modules": true,
 					"/dist": true,
 					"/build": true,
 					"/out": true,
-					"**/vscode-chat-code-block": true
+					"**/vscode-chat-code-block": true,
 				},
 				"debugOverrideEngine": "codegen",
 				"listCount": 5, // увеличьте для больше вариантов
 				"timeoutMs": 8000, // увеличьте таймаут для сложных запросов
-				"length": 500 // максимальная длина предложений
+				"length": 500, // максимальная длина предложений
 			},
 			"chat": {
 				"byok": {
 					// Используйте свой Ollama сервер
-					"ollamaEndpoint": "http://192.168.10.222:11434"
+					"ollamaEndpoint": "http://192.168.10.222:11434",
 				},
 				"localeOverride": "ru",
 				"reviewSelection": {
-					"enabled": false
+					"enabled": false,
 				},
 				"commitMessageGeneration": {
-					"enabled": true // Включено для Copilot
-				}
+					"enabled": true, // Включено для Copilot
+				},
 			},
 			"enable": {
 				"*": true,
 				"plaintext": false,
 				// "markdown": false,
 				"scminput": false,
-				"workspaceFolder": true
-			}
-		}
+				"workspaceFolder": true,
+			},
+		},
 	},
 
 	"indentRainbow": {
@@ -186,74 +186,74 @@
 			"rgba(255, 255,  64, 0.05)",
 			"rgba(127, 255, 127, 0.05)",
 			"rgba(255, 127, 255, 0.05)",
-			"rgba( 79, 236, 236, 0.05)"
-		]
+			"rgba( 79, 236, 236, 0.05)",
+		],
 	},
 
 	"[foxpro]": {
-		"files.encoding": "windows1251"
+		"files.encoding": "windows1251",
 	},
 
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
 	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
 	"[scss]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
 	"[yaml]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
 	"[css]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
 	"[bsl]": {
-		"editor.defaultFormatter": "1c-syntax.language-1c-bsl"
+		"editor.defaultFormatter": "1c-syntax.language-1c-bsl",
 	},
 
 	"search": {
-		"followSymlinks": false
+		"followSymlinks": false,
 	},
 
 	"typescript": {
 		"experimental": {
-			"expandableHover": true
-		}
+			"expandableHover": true,
+		},
 	},
 
 	"html": {
 		"hover": {
 			"references": false,
-			"documentation": false
-		}
+			"documentation": false,
+		},
 	},
 
 	"emmet": {
-		"triggerExpansionOnTab": true
+		"triggerExpansionOnTab": true,
 	},
 
 	"prettier": {
-		"useTabs": true
+		"useTabs": true,
 	},
 
 	"notebook": {
-		"defaultFormatter": "esbenp.prettier-vscode"
+		"defaultFormatter": "esbenp.prettier-vscode",
 	},
 
 	"markdown": {
 		"preview": {
 			"breaks": true, // Одиночные переносы строк отображаются как <br>
 			"typographer": true, // Включает типографские улучшения текста
-			"fontSize": 18
+			"fontSize": 18,
 		},
 		"extension": {
 			"preview": {
-				"autoShowPreviewToSide": false // Автоматически открывать предпросмотр Markdown сбоку
+				"autoShowPreviewToSide": false, // Автоматически открывать предпросмотр Markdown сбоку
 			},
 			// ========== НАСТРОЙКИ TABLE OF CONTENTS ==========
 			"toc": {
@@ -267,9 +267,9 @@
 				"tabSize": 2, // Размер отступа для вложенных элементов
 				"insertAnchor": false, // Не вставлять якоря в заголовки
 				"githubCompatibility": true, // Совместимость с GitHub Markdown
-				"autoInsert": true // Автоматически вставлять TOC при создании нового файла
-			}
-		}
+				"autoInsert": true, // Автоматически вставлять TOC при создании нового файла
+			},
+		},
 	},
 
 	"[markdown]": {
@@ -285,8 +285,8 @@
 			// Настройки автодополнения
 			"comments": "on", // Включено в комментариях
 			"strings": "on", // Включено в строках
-			"other": "on" // Включено везде
-		}
+			"other": "on", // Включено везде
+		},
 	},
 
 	/*
@@ -560,32 +560,37 @@
 	*/
 	"yaml.schemas": {
 		"c:\\Users\\prof\\.vscode\\extensions\\continue.continue-1.0.19-win32-x64\\config-yaml-schema.json": [
-			".continue/**/*.yaml"
-		]
+			".continue/**/*.yaml",
+		],
 	},
 	"files.candidateGuessEncodings": ["windows1251"],
 	"rainbow_csv.highlight_rows": true,
 	"[csv (pipe)]": {
-		"editor.inlayHints.maximumLength": 0
+		"editor.inlayHints.maximumLength": 0,
 	},
 	"[csv]": {
-		"editor.inlayHints.maximumLength": 0
+		"editor.inlayHints.maximumLength": 0,
 	},
 	"diffEditor.ignoreTrimWhitespace": true,
 	"chat.tools.terminal.autoApprove": {
 		"git rev-parse": true,
 		"git --no-pager diff --staged": {
 			"approve": true,
-			"matchCommandLine": true
-		}
+			"matchCommandLine": true,
+		},
 	},
 	"[dockercompose]": {
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
 		"editor.autoIndent": "advanced",
-		"editor.defaultFormatter": "redhat.vscode-yaml"
+		"editor.defaultFormatter": "redhat.vscode-yaml",
 	},
 	"[github-actions-workflow]": {
-		"editor.defaultFormatter": "redhat.vscode-yaml"
-	}
+		"editor.defaultFormatter": "redhat.vscode-yaml",
+	},
+	"roo-cline.debug": false,
+	"roo-cline.allowedCommands": ["git log", "git diff", "git show"],
+	"roo-cline.deniedCommands": [],
+	"diffEditor.experimental.showMoves": true,
+	"diffEditor.renderSideBySide": false,
 }
