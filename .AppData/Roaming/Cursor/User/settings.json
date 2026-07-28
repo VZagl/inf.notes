@@ -100,7 +100,7 @@
 			"**/node_modules": true,
 			"**/vscode-chat-code-block": true,
 		},
-		"eol": "\r\n",
+		"eol": "\n",
 		"associations": {
 			"*.ts": "typescript",
 		},
@@ -185,7 +185,7 @@
 	},
 
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "vscode.typescript-language-features",
 	},
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -556,7 +556,7 @@
 	"[csv]": {
 		"editor.inlayHints.maximumLength": 0,
 	},
-	"diffEditor.ignoreTrimWhitespace": true,
+	"diffEditor.ignoreTrimWhitespace": false,
 	"chat.tools.terminal.autoApprove": {
 		"git rev-parse": true,
 		"git --no-pager diff --staged": {
@@ -578,4 +578,9 @@
 	"workbench.activityBar.orientation": "vertical",
 	"window.commandCenter": true,
 	"cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
+	"diffEditor.experimental.showMoves": true,
+	"diffEditor.renderSideBySide": false,
+	"inlineChat.holdToSpeech": false,
+	"diffEditor.maxComputationTime": 0,
+	"window.autoDetectColorScheme": false,
 }

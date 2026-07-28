@@ -2,5 +2,102 @@
 	"editor.wordWrap": "on",
 	"editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
 	"editor.fontLigatures": true,
-	"editor.fontWeight": "normal"
+	"editor.fontWeight": "normal",
+	"diffEditor.renderSideBySide": false,
+
+	"workbench.colorCustomizations": {
+		"editor.selectionBackground": "#4d2e19cc",
+		"editor.inactiveSelectionBackground": "#4d2e1999",
+		"editorGutter.addedBackground": "#3fb9504d",
+		"editorGutter.addedSecondaryBackground": "#61afef4d",
+		"editorGutter.modifiedBackground": "#3794ff4d",
+		"editorGutter.modifiedSecondaryBackground": "#c678dd4d",
+		"editorGutter.deletedBackground": "#f14c4c4d",
+		"editorGutter.deletedSecondaryBackground": "#e06c754d",
+		"minimapGutter.addedBackground": "#3fb95066",
+		"minimapGutter.addedSecondaryBackground": "#61afef66",
+		"minimapGutter.modifiedBackground": "#3794ff66",
+		"minimapGutter.modifiedSecondaryBackground": "#c678dd66",
+		"minimapGutter.deletedBackground": "#f14c4c66",
+		"minimapGutter.deletedSecondaryBackground": "#e06c7566",
+		"editorOverviewRuler.addedForeground": "#3fb950b3",
+		"editorOverviewRuler.addedSecondaryForeground": "#61afefb3",
+		"editorOverviewRuler.modifiedForeground": "#3794ffb3",
+		"editorOverviewRuler.modifiedSecondaryForeground": "#c678ddb3",
+		"editorOverviewRuler.deletedForeground": "#f14c4cb3",
+		"editorOverviewRuler.deletedSecondaryForeground": "#e06c75b3",
+		"gitDecoration.addedResourceForeground": "#3fb950",
+		"gitDecoration.stageAddedResourceForeground": "#61afef",
+		"gitDecoration.modifiedResourceForeground": "#3794ff",
+		"gitDecoration.stageModifiedResourceForeground": "#c678dd",
+		"gitDecoration.deletedResourceForeground": "#f14c4c",
+		"gitDecoration.stageDeletedResourceForeground": "#e06c75",
+
+		"diffEditor.insertedLineBackground": "#3fb95026",
+		"diffEditor.insertedTextBackground": "#3fb95040",
+		"diffEditor.removedLineBackground": "#f14c4c26",
+		"diffEditor.removedTextBackground": "#f14c4c40",
+		"diffEditorGutter.insertedLineBackground": "#3fb95055",
+		"diffEditorGutter.removedLineBackground": "#f14c4c55",
+		"diffEditorOverview.insertedForeground": "#3fb950cc",
+		"diffEditorOverview.removedForeground": "#f14c4ccc"
+	},
+	
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"logFileHighlighter.customPatterns": [
+		{
+			"pattern": "(\\[WARN\\]|\\bWARN\\b)",
+			"highlightEntireLine": true,
+			"background": "#FFB02022"
+		},
+		{
+			"pattern": "(\\[ERROR\\]|\\bERROR\\b)",
+			"highlightEntireLine": true,
+			"background": "#F14C4C22"
+		},
+		{
+			"pattern": "\\bresult=(fallback|error|fail|failure)\\b",
+			"highlightEntireLine": true,
+			"background": "#D19A6622"
+		},
+
+		{ "pattern": "\\[INFO\\]", "foreground": "#4EC9B0" },
+		{ "pattern": "\\[DEBUG\\]", "foreground": "#61AFEF" },
+		{ "pattern": "\\[WARN\\]", "foreground": "#FFB020" },
+		{ "pattern": "\\[ERROR\\]", "foreground": "#F14C4C", "fontWeight": "bold" },
+
+		{
+			"pattern": "\\b\\d{4}-\\d{2}-\\d{2} \\d{1,2}:\\d{2}:\\d{2}(?:[.,]\\d{1,3})?\\b",
+			"foreground": "#98C379"
+		},
+
+		{ "pattern": "\\b[A-Za-z_][A-Za-z0-9_]*=", "foreground": "#D19A66" },
+
+		{ "pattern": "(?<=\\bevent=)[^\\s]+", "foreground": "#61AFEF" },
+		{ "pattern": "(?<=\\b(source|reason|mode)=)[^\\s]+", "foreground": "#C678DD" },
+		{ "pattern": "(?<=\\bpath=)[^\\s]+", "foreground": "#56B6C2" },
+		{ "pattern": "(?<=\\bid=)[0-9a-fA-F-]+", "foreground": "#56B6C2" },
+
+		{ "pattern": "(?<=\\bresult=)(ok|started)\\b", "foreground": "#4EC9B0", "patternFlags": "i" },
+		{
+			"pattern": "(?<=\\bresult=)(fallback|error|fail|failure)\\b",
+			"foreground": "#F14C4C",
+			"fontWeight": "bold",
+			"patternFlags": "i"
+		},
+		{ "pattern": "(?<=\\bresult=)[^\\s]+", "foreground": "#98C379" },
+
+		{
+			"pattern": "(?<=\\b(duration_ms|files_count|removed_files|cold_files_count|hot_files_count)=)\\d+",
+			"foreground": "#98C379"
+		},
+		{ "pattern": "(?<=\\berror=).*?(?=\\s+[A-Za-z_][A-Za-z0-9_]*=|$)", "foreground": "#E06C75" }
+	]
 }
