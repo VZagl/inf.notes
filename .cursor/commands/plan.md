@@ -13,6 +13,7 @@ Reads from:
 Updates:
 
 - `memory-bank/tasks.md` - Adds detailed implementation plan
+- `memory-bank/activeContext.md` - Updates current mode and next step after planning
 
 ## Progressive Rule Loading
 
@@ -59,30 +60,27 @@ Load: .cursor/rules/isolation_rules/Level4/workflow-level4.mdc
 ## Workflow
 
 1. **Read Task Context**
-
    - Read `memory-bank/tasks.md` to get complexity level
    - Read `memory-bank/activeContext.md` for current context
    - Review codebase structure
 
 2. **Create Implementation Plan**
-
    - **Level 2:** Document planned changes, files to modify, implementation steps
    - **Level 3:** Create comprehensive plan with components, dependencies, challenges
    - **Level 4:** Create phased implementation plan with architectural considerations
 
 3. **Technology Validation** (Level 2-4)
-
    - Document technology stack selection
    - Create proof of concept if needed
    - Verify dependencies and build configuration
 
 4. **Identify Creative Phases**
-
    - Flag components requiring design decisions
    - Document which components need creative exploration
 
 5. **Update Memory Bank**
    - Update `memory-bank/tasks.md` with complete plan
+   - Update `memory-bank/activeContext.md` to reflect post-plan status and recommended next mode (`/build` or `/creative`)
    - Mark planning phase as complete
 
 ## Usage

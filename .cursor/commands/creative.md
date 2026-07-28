@@ -64,19 +64,16 @@ Load: .cursor/rules/isolation_rules/Phases/CreativePhase/creative-phase-algorith
 ## Workflow
 
 1. **Verify Planning Complete**
-
    - Check `memory-bank/tasks.md` for planning completion
    - Verify creative phases are identified
    - If not complete, return to `/plan` command
 
 2. **Identify Creative Phases**
-
    - Read components flagged for creative work from `memory-bank/tasks.md`
    - Prioritize components for design exploration
 
 3. **Execute Creative Phase**
    For each component:
-
    - **🎨🎨🎨 ENTERING CREATIVE PHASE: [TYPE]**
    - Define requirements and constraints
    - Generate 2-4 design options
@@ -87,7 +84,6 @@ Load: .cursor/rules/isolation_rules/Phases/CreativePhase/creative-phase-algorith
    - **🎨🎨🎨 EXITING CREATIVE PHASE**
 
 4. **Document Decisions**
-
    - Create `memory-bank/creative/creative-[feature_name].md`
    - Update `memory-bank/tasks.md` with design decisions
 

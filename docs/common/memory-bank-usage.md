@@ -124,12 +124,15 @@ memory-bank/completed-tasks/
 
 1. Создаёт запись в `memory-bank/completed-tasks/YYYY/MM/[task_id]_YYYY-MM-DD.md`
 2. Удаляет задачу из `memory-bank/backlog.md` (из активных)
-3. Подготавливает Memory Bank к следующей задаче:
+3. Обновляет `docs/project/implementation-plan.md` (поле **Completed** шага) и синхронизирует продуктовый прогресс:
+   - `docs/project/product-roadmap.md` — чекбоксы целей MVP (§6), долгосрочных целей (§7), журнал вех (§9) по таблице соответствия шагам
+   - `docs/project/implementation-plan.md` — колонка **Статус** в «Критерии готовности по фазам»
+4. Подготавливает Memory Bank к следующей задаче:
    - `tasks.md` — очищает Current Task, переносит в Last Completed (только одна запись; история — в `completed-tasks/`)
    - `activeContext.md` — сбрасывает в IDLE
    - `progress.md` — оставляет только последнюю выполненную задачу (очищает старые записи; история — в `completed-tasks/`)
 
-**Важно:** В `tasks.md` и `progress.md` хранится только последняя завершённая задача. Полная история — в `memory-bank/completed-tasks/`.
+**Важно:** В `tasks.md` и `progress.md` хранится только последняя завершённая задача. Полная история — в `memory-bank/completed-tasks/`. Чекбоксы в `product-roadmap.md` **не** обновляются сами по себе — только при явном `/close-task` (см. `.cursor/commands/close-task.md`, шаг 6 п. 7).
 
 Полное описание: `.cursor/commands/close-task.md`.
 
@@ -199,6 +202,15 @@ Memory Bank System совместим с:
 - Использовать правильные разделители путей (`\` для Windows, `/` для Unix)
 - Следовать правилам из `AGENTS.md`
 
+## Завершение фазы BUILD (проект)
+
+Разработка по **TDD** (red → green → refactor). Перед тем как считать BUILD завершённым:
+
+1. Прогнать тесты и статический анализ по [testing-guidelines.md](../project/testing-guidelines.md) («Проверки инструментами») и [testing-guidelines-frontend.md](../project/testing-guidelines-frontend.md): как минимум `pnpm test --run`, при затронутых E2E — `pnpm test:e2e`, плюс `pnpm lint` / `pnpm build`.
+2. Конкретные скрипты — всегда сверять с `package.json` и `tsconfig*.json`.
+3. Для PWA-шагов дополнительно: `pnpm preview`, проверка в DevTools / Lighthouse (см. [tech-stack-pwa.md](../project/tech-stack-pwa.md)).
+4. Не полагаться только на «зелёные» тесты без lint/build — и наоборот: зелёный lint без тестов недостаточен.
+
 ## Чеклист Memory Bank
 
 - [ ] `tasks.md` обновлён с текущей задачей
@@ -208,6 +220,7 @@ Memory Bank System совместим с:
 - [ ] `/close-task` выполнена для финализации задачи
 - [ ] Все ответы на русском языке
 - [ ] Подтверждение получено перед изменениями
+- [ ] Перед закрытием BUILD: пройдены проверки из раздела «Завершение фазы BUILD» выше (или зафиксировано исключение пользователем)
 
 ## Резюме
 
