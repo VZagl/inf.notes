@@ -699,20 +699,25 @@ Conflicts=shutdown.target reboot.target halt.target poweroff.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+KillMode=none
 User=vbox
 Group=vboxusers
 Environment=HOME=/home/vbox
 ExecStart=/usr/bin/VBoxManage startvm "%i" --type headless
-ExecStop=/usr/bin/VBoxManage controlvm "%i" savestate
+# если ВМ уже poweroff/saved — сразу ошибка «not running», exit 0; без KillMode=none
+# systemd ещё ждал бы VBoxHeadless/VBoxSVC до TimeoutStopSec
+ExecStop=/bin/bash -c '/usr/bin/VBoxManage controlvm "%i" savestate || exit 0'
 TimeoutStopSec=300
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-> **Почему так:** `Type=oneshot` — `VBoxManage startvm` не является демоном (`Type=forking` здесь ломает stop). `After=vboxweb.service` — при `reboot`/`poweroff` unit ВМ останавливается **до** `vboxweb`, иначе `controlvm savestate` получает `Failed to create the VirtualBox object` (COM уже недоступен). `Before`/`Conflicts` с `shutdown.target` и др. — ранний вход в shutdown-транзакцию.
+> **Почему так:** `Type=oneshot` — `VBoxManage startvm` не является демоном (`Type=forking` здесь ломает stop). `After=vboxweb.service` — при `reboot`/`poweroff` unit ВМ останавливается **до** `vboxweb`, иначе `controlvm savestate` получает `Failed to create the VirtualBox object` (COM уже недоступен). `Before`/`Conflicts` с `shutdown.target` и др. — ранний вход в shutdown-транзакцию. `KillMode=none`: по умолчанию (`control-group`) после `ExecStop` systemd шлёт SIGTERM процессам в cgroup (`VBoxHeadless`, общий `VBoxSVC`) и ждёт до `TimeoutStopSec` — на уже выключенной ВМ это даёт ~5 минут ожидания и SIGKILL. `ExecStop` с `|| exit 0`: при **running** — savestate (`0%…100%`); если ВМ уже выключили или сохранили в phpVirtualBox — мгновенный отказ `not running` и успешный stop unit без зависания. Проверку через `list runningvms` не используем: при сбое/пустом списке в момент stop savestate можно ошибочно пропустить.
 
 > **Не включайте** `vbox-vm@…` на этом шаге. Пересчёт `TimeoutStopSec` (если RAM ВМ больше ~4 ГБ) — в [§6](#6-настройка-обработки-физической-кнопки-питания-сервера); включение — в [§7](#7-включение-автозапуска).
+
+> **Уже установленный unit:** после правки файла выполните `sudo systemctl daemon-reload`. Для уже `enabled` экземпляров перезапуск unit не обязателен — новый `ExecStop`/`KillMode` подхватятся при следующем stop/reboot.
 
 ---
 
@@ -872,11 +877,13 @@ journalctl -b -1 -u 'vbox-vm@ИМЯ_ВАШЕЙ_ВМ' --no-pager | tail -20
 sudo -u vbox vboxmanage list runningvms
 ```
 
-| В логах stop (`-b -1`)                         | Значение                                           |
-| ---------------------------------------------- | -------------------------------------------------- |
-| `0%...100%` и `Deactivated successfully`       | ✅ Save State прошёл                               |
-| `Failed to create the VirtualBox object` / COM | ❌ unit устарел или порядок stop сломан — см. §5.2 |
-| `TimeoutStopSec` / `SIGKILL`                   | ❌ мало времени — увеличьте `TimeoutStopSec` (§6)  |
+| Лог                                                                                           | Ожидаемый результат                                                 |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `0%...100%` и `Deactivated successfully`                                                      | ✅ Save State прошёл (ВМ была running)                              |
+| сразу `is not currently running`, затем сразу Deactivated                                     | ✅ ВМ уже была poweroff/saved в UI; `\|\| exit 0` + `KillMode=none` |
+| сразу `is not currently running`, затем пауза до `/ 5min`, `Killing … VBoxHeadless`/`VBoxSVC` | ❌ нет `KillMode=none` — обновите unit §5.2                         |
+| `Failed to create the VirtualBox object` / COM                                                | ❌ unit устарел или порядок stop сломан — см. §5.2                  |
+| `TimeoutStopSec` / `SIGKILL` при **работающей** ВМ и обрыве `0%…`                             | ❌ мало времени на savestate — увеличьте `TimeoutStopSec` (§6)      |
 
 Порядок на успешном shutdown (§7.2): сначала stop `vbox-vm@…` (savestate), затем `vboxweb`, затем `virtualbox` (выгрузка модулей).
 
