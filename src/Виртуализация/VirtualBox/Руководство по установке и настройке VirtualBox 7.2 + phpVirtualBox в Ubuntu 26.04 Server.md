@@ -24,6 +24,7 @@
 - [7. Включение автозапуска](#7-включение-автозапуска)
 - [8. Итоговая проверка](#8-итоговая-проверка)
 - [9. Добавление, отключение и удаление ВМ](#9-добавление-отключение-и-удаление-вм)
+- [10. Сквозной (raw) диск и режим Writethrough](#10-сквозной-raw-диск-и-режим-writethrough)
 
 ---
 
@@ -949,4 +950,137 @@ sudo -u vbox vboxmanage unregistervm "СТАРАЯ_ВМ" --delete
 
 ---
 
-Готово. Сервер развёрнут с нуля: VirtualBox и Docker установлены, phpVirtualBox доступен по HTTP, ВМ автозапускаются и сохраняют состояние при выключении — с таймаутами, заданными только для служб VirtualBox. Добавление и вывод ВМ из эксплуатации — [§9](#9-добавление-отключение-и-удаление-вм); при изменении набора ВМ пересчитайте `TimeoutStopSec` по таблице в §6.
+## 10. Сквозной (raw) диск и режим Writethrough
+
+Сквозной диск даёт ВМ прямой доступ к физическому диску или разделу хоста (быстрее обычного `.vdi`, можно загружать ту же ОС «на железе» и в ВМ). Основано на подходе из [статьи MNorin](https://mnorin.com/ispol-zovanie-fizicheskogo-diska-v-virtualbox.html), адаптировано под пользователя `vbox`, phpVirtualBox и systemd из этого мануала.
+
+> **Опасность:** ошибка в выборе устройства уничтожит данные хоста или гостя. Используйте **отдельный** диск/раздел, **не** загрузочный диск Ubuntu Server. Ниже плейсхолдеры `ДИСК` (например `sdb`) и `ИМЯ.vmdk` — подставьте свои значения после `lsblk`.
+
+### 10.1. Определите устройство и каталог для VMDK
+
+```bash
+lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL
+sudo mkdir -p /home/vbox/hdd
+sudo chown vbox:vboxusers /home/vbox/hdd
+sudo chmod 775 /home/vbox/hdd
+```
+
+Убедитесь, что выбранный `/dev/ДИСК` **не** смонтирован как корень/boot хоста и не содержит нужных разделов хоста.
+
+### 10.2. Права доступа к физическому диску
+
+Пользователь `vbox` должен читать и писать устройство (иначе `VERR_ACCESS_DENIED`):
+
+```bash
+# сразу (до перезагрузки)
+sudo chown root:vboxusers /dev/ДИСК
+sudo chmod 660 /dev/ДИСК
+
+# постоянно — udev (подставьте имя устройства, напр. sdb)
+sudo tee /etc/udev/rules.d/99-vbox-rawdisk.rules >/dev/null <<'EOF'
+KERNEL=="ДИСК", GROUP="vboxusers", MODE="0660"
+EOF
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+ls -l /dev/ДИСК
+```
+
+Ожидается: группа `vboxusers`, режим `0660`.
+
+### 10.3. Создайте raw-VMDK
+
+Команде часто нужны права root на чтение `/dev/ДИСК`. Файл `.vmdk` и реестр медиа должны принадлежать **`vbox`** (владелец ВМ), иначе phpVirtualBox получит отказ в доступе.
+
+```bash
+# удалите старые заготовки с тем же именем, если есть
+sudo rm -f /home/vbox/hdd/ИМЯ.vmdk /home/vbox/hdd/ИМЯ-*.vmdk
+
+# классический способ (как в статье MNorin)
+sudo VBoxManage internalcommands createrawvmdk \
+  -filename /home/vbox/hdd/ИМЯ.vmdk \
+  -rawdisk /dev/ДИСК
+
+# права на файл-указатель
+sudo chown vbox:vboxusers /home/vbox/hdd/ИМЯ.vmdk
+sudo chmod 660 /home/vbox/hdd/ИМЯ.vmdk
+ls -la /home/vbox/hdd/
+```
+
+Альтернатива (VirtualBox 7.x):
+
+```bash
+sudo -u vbox VBoxManage createmedium disk \
+  --filename /home/vbox/hdd/ИМЯ.vmdk \
+  --format=VMDK --variant=RawDisk \
+  --property RawDrive=/dev/ДИСК
+```
+
+(если `createmedium` не может открыть `/dev/ДИСК` — сначала убедитесь в §10.2, либо создайте от root и сразу `chown` на `vbox`.)
+
+Только раздел диска (не весь диск) — через параметр разделов (см. [Advanced Topics](https://www.virtualbox.org/manual/topics/AdvancedTopics.html)), например `Partitions=1,5` в `createmedium`.
+
+### 10.4. Подключите диск к ВМ и включите Writethrough
+
+ВМ должна быть **выключена** (`poweroff` / `saved`, не `running`).
+
+**Через phpVirtualBox:**
+
+1. Settings → Storage → Controller: SATA (или IDE) → Add Hard Disk → выберите `/home/vbox/hdd/ИМЯ.vmdk`.
+2. File → Virtual Media Manager → выберите этот носитель → Modify → тип **Writethrough** → OK.
+
+**Через CLI:**
+
+```bash
+sudo -u vbox VBoxManage storageattach "ИМЯ_ВАШЕЙ_ВМ" \
+  --storagectl "SATA" --port 1 --device 0 --type hdd \
+  --medium /home/vbox/hdd/ИМЯ.vmdk
+
+sudo -u vbox VBoxManage modifymedium disk /home/vbox/hdd/ИМЯ.vmdk --type writethrough
+sudo -u vbox VBoxManage list hdds | grep -A5 ИМЯ
+```
+
+Имя контроллера (`SATA` / `SATA Controller`) смотрите в `showvminfo` / phpVirtualBox; порт не должен совпадать с уже занятым.
+
+> **Writethrough:** запись гостя идёт сразу на физический носитель; снимки (snapshots) для такого диска недоступны в обычном смысле. Save State ВМ (§5–§8) по-прежнему сохраняет RAM, но **не** заменяет согласованное выключение гостя при работах с СУБД на raw-диске.
+
+### 10.5. Устранение проблем
+
+**`VERR_ACCESS_DENIED` / «Проблемы с разрешениями доступа к файлу для носителя …vmdk»**
+
+```bash
+ls -l /home/vbox/hdd/ИМЯ.vmdk /dev/ДИСК
+id vbox
+# vbox должен быть в vboxusers; .vmdk — vbox:vboxusers; /dev/ДИСК — группа vboxusers, 0660
+sudo systemctl restart vboxweb
+```
+
+**Файл `.vmdk` удалили (`rm`), а VirtualBox помнит UUID** (`NS_ERROR_INVALID_ARG`, дубликат пути/UUID при `createrawvmdk`):
+
+Реестр медиа — у пользователя **`vbox`** (`~vbox/.config/VirtualBox/` или `~vbox/.VirtualBox/`), не у root (если только вы сами не создавали диски от root).
+
+```bash
+# список носителей и UUID
+sudo -u vbox VBoxManage list hdds
+
+# отвязать «мертвую» запись (UUID из ошибки / list hdds)
+sudo -u vbox VBoxManage closemedium disk UUID_СТАРЫЙ
+# если файл ещё числится на диске: добавьте --delete
+
+sudo rm -f /home/vbox/hdd/ИМЯ.vmdk /home/vbox/hdd/ИМЯ-*.vmdk
+# затем снова §10.3 и §10.4
+sudo systemctl restart vboxweb
+```
+
+Если носитель создавали **от root** и реестр «залип» у root:
+
+```bash
+sudo VBoxManage closemedium disk UUID_СТАРЫЙ
+sudo rm -f /home/vbox/hdd/ИМЯ*
+# пересоздайте §10.3, сразу chown на vbox, дальше только sudo -u vbox
+```
+
+**Не используйте** `pkill vboxwebsrv` / ручной `su - vbox -c "vboxwebsrv …"` — в этом мануале веб-служба управляется unit из §3: `sudo systemctl restart vboxweb`.
+
+---
+
+Готово. Сервер развёрнут с нуля: VirtualBox и Docker установлены, phpVirtualBox доступен по HTTP, ВМ автозапускаются и сохраняют состояние при выключении — с таймаутами, заданными только для служб VirtualBox. Добавление и вывод ВМ — [§9](#9-добавление-отключение-и-удаление-вм); сквозной диск — [§10](#10-сквозной-raw-диск-и-режим-writethrough); при изменении набора ВМ пересчитайте `TimeoutStopSec` по таблице в §6.
