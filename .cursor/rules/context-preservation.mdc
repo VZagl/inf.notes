@@ -30,19 +30,20 @@ alwaysApply: true
 
 Карта `/slash` → файл:
 
-| Команда                 | Файл                                       |
-| ----------------------- | ------------------------------------------ |
-| `/van`                  | `.cursor/commands/van.md`                  |
-| `/plan`                 | `.cursor/commands/plan.md`                 |
-| `/creative`             | `.cursor/commands/creative.md`             |
-| `/build`                | `.cursor/commands/build.md`                |
-| `/reflect`              | `.cursor/commands/reflect.md`              |
-| `/archive`              | `.cursor/commands/archive.md`              |
-| `/close-task`           | `.cursor/commands/close-task.md`           |
-| `/git-commit`           | `.cursor/commands/git-commit.md`           |
-| `/git-merge-to-develop` | `.cursor/commands/git-merge-to-develop.md` |
-| `/release-prepare`      | `.cursor/commands/release-prepare.md`      |
-| `/sequential-thinking`  | `.cursor/commands/sequential-thinking.md`  |
+| Команда                | Файл                                      |
+| ---------------------- | ----------------------------------------- |
+| `/van`                 | `.cursor/commands/van.md`                 |
+| `/plan`                | `.cursor/commands/plan.md`                |
+| `/creative`            | `.cursor/commands/creative.md`            |
+| `/build`               | `.cursor/commands/build.md`               |
+| `/reflect`             | `.cursor/commands/reflect.md`             |
+| `/archive`             | `.cursor/commands/archive.md`             |
+| `/close-task`          | `.cursor/commands/close-task.md`          |
+| `/git-commit`          | `.cursor/commands/git-commit.md`          |
+| `/git-merge-to`        | `.cursor/commands/git-merge-to.md`        |
+| `/git-merge-to-build`  | `.cursor/commands/git-merge-to-build.md`  |
+| `/release-prepare`     | `.cursor/commands/release-prepare.md`     |
+| `/sequential-thinking` | `.cursor/commands/sequential-thinking.md` |
 
 Определить активную команду (по приоритету):
 

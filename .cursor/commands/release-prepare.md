@@ -7,8 +7,8 @@
 из‑за блокировки каталога `.cursor/`.
 
 **Источники правил:** `docs/common/git-commit-description.md`,
-`docs/common/git-workflow.md`, `CHANGELOG.md` (формат Keep a Changelog, язык —
-русский).
+`docs/common/git-workflow.md`, `docs/project/project-structure.md` → «Версия
+продукта», `CHANGELOG.md` (формат Keep a Changelog, язык — русский).
 
 **Связанные команды:** `/close-task` (опциональное накопление в `[Unreleased]`),
 `/git-commit`.
@@ -29,7 +29,10 @@
 
 ### Шаг 2. Определить версию
 
-1. Прочитай текущую версию из `package.json` (источник правды для SemVer).
+Правила версии, список файлов и имя продукта — **только** из
+`docs/project/project-structure.md` → «Версия продукта». Не зашивать пути стека.
+
+1. Прочитай текущую версию из **источника правды** этого раздела.
 2. Выполни `git describe --tags --abbrev=0` (последний тег, например `v1.0.0`).
    - Если тегов нет — диапазон коммитов с начала истории `develop`.
 3. Спроси пользователя **новую версию** (`X.Y.Z`) или тип bump:
@@ -49,13 +52,13 @@ git log <последний-тег>..develop --no-merges --pretty=format:"%h %s"
 
 **Включать в анализ:**
 
-- `feat`, `fix`, `perf` — пользовательские изменения
+- `feat`, `fix`, `perf` — изменения, заметные пользователю продукта
 
 **Исключать из итогового CHANGELOG:**
 
 - `docs(memory-bank):`, `docs(plan):`, прочие чисто документационные коммиты
 - `chore`, `ci`, `test`, `refactor`, `style`, `build` — если изменение **не
-  заметно** конечному пользователю приложения
+  заметно** пользователю продукта
 - дубликаты одной и той же правки (несколько коммитов с одним смыслом)
 
 **B. Completed-задачи** — файлы в `memory-bank/completed-tasks/` с датой
@@ -66,6 +69,7 @@ git log <последний-тег>..develop --no-merges --pretty=format:"%h %s"
 формулировок на русском.
 
 **C. Секция `[Unreleased]`** в `CHANGELOG.md` — черновик из `/close-task`.
+Если файла ещё нет — создать на шаге 5 (Keep a Changelog, русский).
 
 ### Шаг 4. Сформировать секцию CHANGELOG
 
@@ -75,9 +79,8 @@ git log <последний-тег>..develop --no-merges --pretty=format:"%h %s"
    - **Изменено** — изменения существующего поведения
    - **Исправлено** — `fix`
    - **Удалено**, **Устарело**, **Безопасность** — при наличии
-2. Язык: **русский**, формулировки для **пользователя приложения**, не для
-   разработчика (без упоминаний Memory Bank, E2E harness, specta, dev-debug-panel
-   и т.п.).
+2. Язык: **русский**, формулировки для **пользователя продукта**, не для
+   разработчика (без упоминаний Memory Bank и внутренней инфраструктуры).
 3. Одна задача / одна логическая фича = один пункт списка.
 4. Подготовь блок:
 
@@ -103,31 +106,22 @@ git log <последний-тег>..develop --no-merges --pretty=format:"%h %s"
 
 ### Шаг 5. Обновить CHANGELOG.md
 
-1. Вставить новую секцию **сразу после** `## [Unreleased]`.
-2. Очистить содержимое `[Unreleased]` (оставить заголовок пустым).
-3. Обновить ссылки внизу файла (Keep a Changelog):
+1. Если `CHANGELOG.md` нет — создать в корне по Keep a Changelog (русский), с
+   секцией `## [Unreleased]`.
+2. Вставить новую секцию **сразу после** `## [Unreleased]`.
+3. Очистить содержимое `[Unreleased]` (оставить заголовок пустым).
+4. Обновить ссылки внизу файла (Keep a Changelog):
    - `[Unreleased]: .../compare/vX.Y.Z...HEAD`
    - `[X.Y.Z]: .../releases/tag/vX.Y.Z`
    - сохранить ссылки на прошлые версии
 
 ### Шаг 6. Синхронизировать версию
 
-Обновить **одинаковое** значение `X.Y.Z` в:
+Обновить **одинаковое** значение `X.Y.Z` во **всех существующих** файлах из
+таблицы «Файлы с той же версией» в `docs/project/project-structure.md` →
+«Версия продукта». Нет файла — строку пропустить, файл ради версии не создавать.
 
-| Файл                        | Поле        |
-| --------------------------- | ----------- |
-| `package.json`              | `"version"` |
-| `src-tauri/Cargo.toml`      | `version`   |
-| `src-tauri/tauri.conf.json` | `"version"` |
-
-После правки `Cargo.toml` обновить `src-tauri/Cargo.lock`:
-
-```bash
-cargo generate-lockfile --manifest-path src-tauri/Cargo.toml
-```
-
-(или `pnpm build:rust` / сборка, если lockfile обновляется автоматически в вашем
-окружении — зафиксировать изменение lockfile в том же коммите.)
+Сопутствующие lockfile / манифесты — только если они указаны в той же таблице.
 
 ### Шаг 7. Показать план и запросить подтверждение
 
@@ -136,11 +130,13 @@ cargo generate-lockfile --manifest-path src-tauri/Cargo.toml
 - текущая → новая версия
 - последний тег и диапазон коммитов
 - полный diff или текст новой секции CHANGELOG
-- список изменяемых файлов
+- список изменяемых файлов (из раздела «Версия продукта» + `CHANGELOG.md`)
 
 Спроси: «Применить подготовку релиза X.Y.Z?» Дождись явного подтверждения.
 
 ### Шаг 8. Коммит (только после подтверждения)
+
+Имя продукта в сообщениях — из раздела «Версия продукта» (не хардкодить).
 
 1. Создай `.git-commit-msg.txt` через инструмент `Write` (UTF-8 без BOM):
 
@@ -148,11 +144,11 @@ cargo generate-lockfile --manifest-path src-tauri/Cargo.toml
 chore(release): версия X.Y.Z
 
 - обновлён CHANGELOG.md
-- синхронизирована версия X.Y.Z в package.json, Cargo.toml,
-  tauri.conf.json и Cargo.lock
+- синхронизирована версия X.Y.Z в файлах из project-structure.md
+  (раздел «Версия продукта»)
 ```
 
-2. `git add CHANGELOG.md package.json src-tauri/Cargo.toml src-tauri/tauri.conf.json src-tauri/Cargo.lock`
+2. `git add CHANGELOG.md` и все обновлённые файлы из таблицы версии.
 3. `git commit -F .git-commit-msg.txt`
 4. Удали `.git-commit-msg.txt`.
 
@@ -161,37 +157,33 @@ chore(release): версия X.Y.Z
 Merge в `main`, тег и push **не выполнять автоматически** из Cursor — каталог
 `.cursor/` может быть заблокирован IDE.
 
-**Рекомендуемый порядок (Git Bash, Cursor закрыт):**
+**Рекомендуемый порядок** (Git Bash или иной терминал вне блокировки `.cursor/`;
+корень — текущий репозиторий). Подставь фактические `X.Y.Z` и имя продукта из
+раздела «Версия продукта»:
 
 ```bash
-cd /h/edu/edu.tauri/pet-ai.bot-bench
-
 git push origin develop
 
 git checkout main
 git pull origin main
 
-# при ошибке untracked Cargo.lock: rm src-tauri/Cargo.lock
-
 cat > .git-commit-msg.txt << 'EOF'
 chore(release): влить develop в main — версия X.Y.Z
 
-- релиз BotBench X.Y.Z
+- релиз <имя-продукта> X.Y.Z
 - обновлён CHANGELOG.md
 EOF
 
 git merge --no-ff develop -F .git-commit-msg.txt
 rm .git-commit-msg.txt
 
-git tag -a vX.Y.Z -m "BotBench X.Y.Z"
+git tag -a vX.Y.Z -m "<имя-продукта> X.Y.Z"
 
 git push origin main
 git push origin vX.Y.Z
 
 git checkout develop
 ```
-
-Подставь фактическую `X.Y.Z` в команды и сообщения.
 
 ---
 
@@ -202,8 +194,8 @@ git checkout develop
   пользователь не просит явно и не закрыл Cursor.
 - **CHANGELOG:** не включать dev-инфраструктуру, Memory Bank, внутренние
   рефакторинги без пользовательского эффекта.
-- **Версия:** не оставлять рассинхрон между `package.json`, `Cargo.toml`,
-  `tauri.conf.json` и `Cargo.lock`.
+- **Версия:** не оставлять рассинхрон между файлами из раздела «Версия
+  продукта»; не зашивать пути стека в эту команду.
 - **Кодировка:** для `.git-commit-msg.txt` — только инструмент `Write`, не
   PowerShell `Out-File`.
 
@@ -212,11 +204,12 @@ git checkout develop
 ## Чек-лист выполнения
 
 - [ ] Ветка `develop`, рабочая директория чистая
+- [ ] Прочитан раздел «Версия продукта» в `docs/project/project-structure.md`
 - [ ] Последний тег определён, новая версия согласована
 - [ ] Источники собраны: git log + completed-tasks + [Unreleased]
 - [ ] Секция CHANGELOG сформирована на русском (Keep a Changelog)
 - [ ] [Unreleased] очищен, ссылки внизу обновлены
-- [ ] Версия синхронизирована в четырёх файлах
+- [ ] Версия синхронизирована во всех существующих файлах из раздела «Версия продукта»
 - [ ] План показан, подтверждение получено
 - [ ] Коммит `chore(release): версия X.Y.Z` создан
-- [ ] Пользователю выведены инструкции merge → tag → push (Git Bash)
+- [ ] Пользователю выведены инструкции merge → tag → push

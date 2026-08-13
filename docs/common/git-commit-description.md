@@ -65,6 +65,8 @@ Closes #123
 
 Речь о коммитах **трекинга и сопутствующей документации задачи** в Memory Bank: `/van`, `/plan`, `/creative`, `/reflect`, `/archive`, `/close-task` и аналогичные шаги **без** реализации прикладного кода (см. `docs/common/memory-bank-usage.md`, `.cursor/commands/*.md`). **Фаза `/build`** — реализация задачи в коде: коммиты после `/build` оформлять как **`feat` / `fix` / `refactor` и т.д.** (scope области фичи), **не** как `docs(memory-bank)` — даже при правках `tasks.md`, `progress.md` или `activeContext.md` в том же коммите.
 
+**Коммит `/van`:** в теле коммита указать имя feature-ветки, если она создана или выбрана (см. `docs/common/memory-bank-usage.md` → «Git-ветка»). Типичный первый пункт тела: постановка в `tasks.md` (Level, ветка, цель, чеклист).
+
 **Сателлиты workflow (не считать «смешением с прикладным кодом»):**
 
 - `memory-bank/**` — основной объём;
@@ -73,10 +75,10 @@ Closes #123
 
 **Правила выбора type:**
 
-1. **`docs(memory-bank):`** — только если **одновременно**: в staged есть правки в **`memory-bank/**`**; **нет** прикладного кода (`src/`, `src-tauri/src/`, продуктовые тесты, конфиги как часть фичи); по контексту это **трекинг** (`/van`…`/close-task`), **не** итог **`/build`**. Допускаются **сателлиты** из списка выше (типичный `/close-task`: Memory Bank + **Completed** в плане).
-2. **Итог `/build`** — **никогда** `docs(memory-bank)`, даже если нет `src/` и меняются только `docs/**/*` и/или `memory-bank/tasks.md`, `progress.md`, `activeContext.md`: выбрать **`feat` / `fix` / `refactor` / `test` / `docs` / `docs(plan):`** по смыслу diff.
+1. **`docs(memory-bank):`** — только если **одновременно**: в staged есть правки в **`memory-bank/**`**; **нет** прикладного кода (каталоги продукта из `docs/project/project-structure.md` → «Каталоги продукта», продуктовые тесты, конфиги как часть фичи); по контексту это **трекинг** (`/van`…`/close-task`), **не** итог **`/build`**. Допускаются **сателлиты** из списка выше (типичный `/close-task`: Memory Bank + **Completed** в плане).
+2. **Итог `/build`** — **никогда** `docs(memory-bank)`, даже если нет каталогов продукта из `docs/project/project-structure.md` и меняются только `docs/**/*` и/или `memory-bank/tasks.md`, `progress.md`, `activeContext.md`: выбрать **`feat` / `fix` / `refactor` / `test` / `docs` / `docs(plan):`** по смыслу diff.
 3. В staged **есть** прикладной код **и** правки в `memory-bank/` (часто **`/build`**) → **`feat` / `fix` / `refactor` и т.д.**, scope области фичи; **не** `docs(memory-bank)`.
-4. Правки **только** в `docs/` **без** `memory-bank/` → `docs(plan):`, `docs:` и т.д.; **отсутствие** путей `src/` и `src-tauri/src/` **само по себе** не означает `docs(memory-bank)`.
+4. Правки **только** в `docs/` **без** `memory-bank/` → `docs(plan):`, `docs:` и т.д.; **отсутствие** путей прикладного кода из `docs/project/project-structure.md` **само по себе** не означает `docs(memory-bank)`.
 
 **Подсказка для ИИ:** `docs(memory-bank):` — когда в diff есть **`memory-bank/**`** и контекст — **`/close-task`** / инициализация задачи / рефлексия / архив, **а не** `/build`. Для **`/build`** с одними только `docs/\*_/_` смотреть п.2 и п.4.
 

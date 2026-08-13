@@ -48,6 +48,8 @@
 
 **Источник `{task_id}`:** секция «Current Task» в `memory-bank/tasks.md` (приоритет 1) или «Last Completed Task» (приоритет 2, если Current пуст).
 
+`{task_id}` — **полный** идентификатор. Типичный вид значения: `step-…`. Префикс `step-` уже входит в `{task_id}`; **не** писать `step-{task_id}`. В шаблонах и примерах ниже `{task_id}` не заменяется на вымышленное имя — подстановка только из `tasks.md`.
+
 **Трекинг-фазы** (`/van`…`/close-task`, без прикладного кода) — type всегда `docs(memory-bank):`:
 
 | Команда       | Шаблон заголовка                      |
@@ -83,7 +85,7 @@
 3. **Конкретика из diff**: Level, ветка, ключевые решения плана, имя артефакта (`creative-*.md`, `reflection-*.md`, `archive-*.md`, путь `completed-tasks/…`).
 4. **Переход фазы** — отдельный пункт в конце: режим BUILD, REFLECT→ARCHIVE, IDLE, следующий `/archive` / `/close-task` / `/van`.
 5. **Не дробить** memory-bank на отдельные пункты по каждому файлу без причины.
-6. **`/build`**: код, тесты, продуктовые docs — основные пункты; memory-bank **одной строкой в конце** (чеклист/прогресс), не как главный пункт.
+6. **`/build`**: реализованное в каталогах продукта / тестах / docs / заметках (`docs/project/project-structure.md`) — основные пункты; memory-bank **одной строкой в конце** (чеклист/прогресс), не как главный пункт.
 
 **Шаблоны тела по фазам** (порядок пунктов; наполнение — из `git diff --staged`):
 
@@ -92,79 +94,71 @@
 | `/van`        | постановка в tasks.md (Level, ветка, цель, чеклист) | уточнение backlog/scope, если менялся                      | объединённое обновление MB или next step                               |
 | `/plan`       | суть плана в tasks.md (этапы, чеклист, риски)       | ключевые решения/ограничения из плана                      | activeContext (режим, next steps); сателлит implementation-plan        |
 | `/creative`   | артефакт `creative-*.md` + ключевые решения         | статус CREATIVE COMPLETE, next steps в tasks/activeContext | —                                                                      |
-| `/build`      | реализованное в коде/тестах/docs                    | детали по diff                                             | memory-bank одной строкой (опционально)                                |
+| `/build`      | реализованное в продукте / тестах / docs / заметках | детали по diff                                             | memory-bank одной строкой (опционально)                                |
 | `/reflect`    | артефакт `reflection-*.md` + краткое содержание     | статус/Reflection Highlights в tasks.md                    | переход REFLECT→ARCHIVE в activeContext                                |
 | `/archive`    | артефакт `archive-*.md` + что внутри                | tasks.md: Last Completed, резюме, /close-task              | progress, сброс activeContext                                          |
 | `/close-task` | карточка `completed-tasks/YYYY/MM/{task_id}_….md`   | backlog (удаление, следующая задача)                       | tasks/progress/activeContext → IDLE; implementation-plan **Completed** |
 
-**Примеры полных сообщений** (из реальных коммитов):
+**Примеры полных сообщений:**
 
-**Важно:** примеры ниже действительны **только** если заголовок **совпадает** с текущей таблицей «Шаблон заголовка». Устаревшие формулировки из истории репозитория **не** использовать.
-
-```
-docs(memory-bank): инициализировать задачу step-binance-websocket
-
-- заполнены tasks.md, activeContext.md, progress.md (ветка, Level 4, шаг PLAN)
-- в backlog для шага указан месячный интервал 1mo вместо маппинга с 1M
-```
+**Важно:** примеры ниже действительны **только** если заголовок **совпадает** с текущей таблицей «Шаблон заголовка». Устаревшие формулировки из истории репозитория **не** использовать. В заголовках `{task_id}` — тот же плейсхолдер, что в таблице (полный ID, не `step-{task_id}`).
 
 ```
-docs(memory-bank): зафиксировать план задачи step-binance-websocket
+docs(memory-bank): инициализировать задачу {task_id}
 
-- в tasks.md добавлен детальный план Level 4: обзор, диаграмма, таблица
-  требований, этапы BUILD, чеклист технологий, creative-фазы, риски
-- в activeContext.md отмечено завершение PLAN и следующие шаги (CREATIVE,
-  VAN QA, BUILD), добавлены ссылки на implementation-plan и
-  event-messaging-subscriptions
-- в implementation-plan.md уточнён абзац step-binance-websocket: канон
-  месяца 1mo в приложении, строка подписки через адаптер WS, ссылка на
-  docs биржи и нормализация виджетов через widgets_config
+- заполнены tasks.md, activeContext.md, progress.md (ветка, Level, шаг PLAN)
+- уточнён backlog/scope, если менялся
 ```
 
 ```
-docs(memory-bank): зафиксировать creative-фазу step-binance-websocket
+docs(memory-bank): зафиксировать план задачи {task_id}
 
-- добавлен документ creative-step-binance-websocket.md с решениями по
-  binance.kline.v1 (key, payload) и merge live-свечей в hot parquet
+- в tasks.md добавлен детальный план: этапы BUILD, чеклист, риски
+- в activeContext.md отмечено завершение PLAN и следующие шаги
+- при необходимости уточнён абзац шага в implementation-plan.md
+```
+
+```
+docs(memory-bank): зафиксировать creative-фазу {task_id}
+
+- добавлен документ creative-{task_id}.md с принятыми решениями
 - обновлены tasks.md и activeContext.md: статус CREATIVE COMPLETE,
-  зафиксированы решения и следующие шаги (VAN QA, BUILD)
+  следующие шаги (VAN QA, BUILD)
 ```
 
 ```
-feat(logging): добавить log_filters в config
+feat(notes): добавить раздел по теме
 
-- добавлен options.log_filters (tree + flat) и резолвер prefix walk
-- реализована per-event фильтрация в BufferLogger и перефильтрация
-  буфера при switch_to_file
-- исправлен compute_startup_max_level: max LevelFilter вместо min
-- обновлены config-schema.md, config.ts и memory-bank (BUILD)
+- добавлена заметка в каталоге продукта (см. project-structure.md)
+- обновлены связанные ссылки в документации
+- обновлён memory-bank (BUILD)
 ```
 
 ```
-docs(memory-bank): зафиксировать рефлексию step-binance-websocket
+docs(memory-bank): зафиксировать рефлексию {task_id}
 
-- добавлен документ reflection-step-binance-websocket.md с итогами Level 4
+- добавлен документ reflection-{task_id}.md с итогами
 - обновлены статус задачи и блок Reflection Highlights в tasks.md
 - обновлён activeContext: завершён REFLECT, переход к ARCHIVE, шаг /archive
 ```
 
 ```
-docs(memory-bank): заархивировать step-binance-websocket
+docs(memory-bank): заархивировать {task_id}
 
-- добавлен memory-bank/archive/archive-step-binance-websocket.md (Level 4)
-- обновлён tasks.md: IDLE, Last Completed — step-binance-websocket;
+- добавлен memory-bank/archive/archive-{task_id}.md
+- обновлён tasks.md: IDLE, Last Completed — {task_id};
   краткое резюме и отсылка к /close-task
 - в progress.md зафиксирована фаза ARCHIVE и ссылки на архив
 - сброшен activeContext.md под следующий /close-task или /van после мержа
 ```
 
 ```
-docs(memory-bank): финализировать step-binance-websocket
+docs(memory-bank): финализировать задачу {task_id}
 
-- создана карточка completed-tasks/2026/05/step-binance-websocket_2026-05-07.md
+- создана карточка completed-tasks/YYYY/MM/{task_id}_YYYY-MM-DD.md
 - обновлены tasks.md, activeContext.md и progress.md под IDLE и следующий /van
-- в backlog удалён step-binance-websocket, добавлен step-virtual-balance (высокий)
-- в implementation-plan.md у шага step-binance-websocket заполнено поле Completed
+- в backlog удалён {task_id}, при готовности зависимостей добавлен следующий шаг
+- в implementation-plan.md у шага {task_id} заполнено поле Completed
 ```
 
 ### Шаг 3. Показать сообщение и запросить подтверждение
