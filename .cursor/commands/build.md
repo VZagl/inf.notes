@@ -5,17 +5,21 @@ This command implements the planned changes following the implementation plan an
 ## Memory Bank Integration
 
 Reads from:
+
 - `memory-bank/tasks.md` - Implementation plan and checklists
 - `memory-bank/creative/creative-*.md` - Design decisions (Level 3-4)
 - `memory-bank/activeContext.md` - Current project context
 
 Updates:
+
 - `memory-bank/tasks.md` - Implementation progress, test results, and status
 - `memory-bank/progress.md` - Build status, test outcomes, and observations
+- `memory-bank/activeContext.md` - Current focus (BUILD progress/complete), Next Steps (/reflect)
 
 ## Progressive Rule Loading
 
 ### Step 1: Load Core Rules
+
 ```
 Load: .cursor/rules/isolation_rules/main.mdc
 Load: .cursor/rules/isolation_rules/Core/memory-bank-paths.mdc
@@ -23,25 +27,30 @@ Load: .cursor/rules/isolation_rules/Core/command-execution.mdc
 ```
 
 ### Step 2: Load BUILD Mode Map
+
 ```
 Load: .cursor/rules/isolation_rules/visual-maps/build-mode-map.mdc
 ```
 
 ### Step 3: Load Complexity-Specific Implementation Rules
+
 Based on complexity level from `memory-bank/tasks.md`:
 
 **Level 1:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level1/workflow-level1.mdc
 Load: .cursor/rules/isolation_rules/Level1/optimized-workflow-level1.mdc
 ```
 
 **Level 2:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level2/workflow-level2.mdc
 ```
 
 **Level 3-4:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level3/implementation-intermediate.mdc
 Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
@@ -104,8 +113,10 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
 6. **Verification**
    - Verify all build steps completed
    - Verify all success criteria tests pass
+   - Run any **additional mandatory checks** (static analysis, typecheck, linters, formatting, language-specific toolchains, extra test entrypoints) required by the **active project’s** `AGENTS.md` and the docs it links to — not only the main test command from this workflow
    - Verify changes meet requirements
    - Update `memory-bank/tasks.md` with completion status
+   - Update `memory-bank/activeContext.md`: Current Focus = BUILD progress/complete; Next Steps = /reflect
 
 ## Usage
 
@@ -114,4 +125,3 @@ Type `/build` to start implementation based on the plan in `memory-bank/tasks.md
 ## Next Steps
 
 After implementation complete, proceed to `/reflect` command for task review.
-
