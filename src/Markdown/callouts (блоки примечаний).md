@@ -46,7 +46,6 @@ GitHub поддерживает следующие типы callouts:
 
 ```json
 {
-	
 	"markdown": {
 		"preview": {
 			"breaks": true, // Одиночные переносы строк отображаются как <br>

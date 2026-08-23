@@ -1,0 +1,11 @@
+*.*
+!.gitignore
+
+!.cursor/mcp.json
+
+!Roaming/Code/User/settings.json
+!Roaming/Code/User/mcp.json
+
+!Roaming/Cursor/User/settings.json
+!Roaming/Cursor/User/mcp.json
+

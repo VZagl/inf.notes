@@ -552,10 +552,7 @@ interface UseCounterReturn {
 	setValue: (value: number) => void;
 }
 
-export function useCounter(
-	initialValue: number = 0,
-	options: UseCounterOptions = {}
-): UseCounterReturn {
+export function useCounter(initialValue: number = 0, options: UseCounterOptions = {}): UseCounterReturn {
 	const { min, max } = options;
 	const [count, setCount] = useState(initialValue);
 
@@ -584,7 +581,7 @@ export function useCounter(
 			if (max !== undefined) newValue = Math.min(newValue, max);
 			setCount(newValue);
 		},
-		[min, max]
+		[min, max],
 	);
 
 	return { count, increment, decrement, reset, setValue };

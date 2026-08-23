@@ -182,10 +182,8 @@
    import * as Location from 'expo-location';
 
    export async function requestPermissions() {
-   	const { status: foregroundStatus } =
-   		await Location.requestForegroundPermissionsAsync();
-   	const { status: backgroundStatus } =
-   		await Location.requestBackgroundPermissionsAsync();
+   	const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync();
+   	const { status: backgroundStatus } = await Location.requestBackgroundPermissionsAsync();
 
    	return foregroundStatus === 'granted' && backgroundStatus === 'granted';
    }
@@ -211,11 +209,7 @@
    			]
    		],
    		"android": {
-   			"permissions": [
-   				"ACCESS_BACKGROUND_LOCATION",
-   				"ACCESS_COARSE_LOCATION",
-   				"ACCESS_FINE_LOCATION"
-   			]
+   			"permissions": ["ACCESS_BACKGROUND_LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
    		}
    	}
    }

@@ -9,9 +9,7 @@
 ```jsx
 import { View } from 'react-native';
 
-<View style={{ padding: 10, backgroundColor: 'lightblue' }}>
-	{/* другие компоненты */}
-</View>;
+<View style={{ padding: 10, backgroundColor: 'lightblue' }}>{/* другие компоненты */}</View>;
 ```
 
 ---
@@ -35,10 +33,7 @@ import { Text } from 'react-native';
 ```jsx
 import { Image } from 'react-native';
 
-<Image
-	source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
-	style={{ width: 40, height: 40 }}
-/>;
+<Image source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} style={{ width: 40, height: 40 }} />;
 ```
 
 ---
@@ -66,10 +61,7 @@ import { ScrollView, Text } from 'react-native';
 ```jsx
 import { FlatList, Text } from 'react-native';
 
-<FlatList
-	data={[{ key: 'A' }, { key: 'B' }]}
-	renderItem={({ item }) => <Text>{item.key}</Text>}
-/>;
+<FlatList data={[{ key: 'A' }, { key: 'B' }]} renderItem={({ item }) => <Text>{item.key}</Text>} />;
 ```
 
 ---
@@ -100,10 +92,7 @@ import { SectionList, Text } from 'react-native';
 ```jsx
 import { TextInput } from 'react-native';
 
-<TextInput
-	placeholder='Введите текст'
-	style={{ borderWidth: 1, padding: 8 }}
-/>;
+<TextInput placeholder='Введите текст' style={{ borderWidth: 1, padding: 8 }} />;
 ```
 
 ---
@@ -265,9 +254,7 @@ import { StatusBar } from 'react-native';
 ```jsx
 import { RefreshControl, ScrollView } from 'react-native';
 
-<ScrollView
-	refreshControl={<RefreshControl refreshing={false} onRefresh={() => {}} />}
-/>;
+<ScrollView refreshControl={<RefreshControl refreshing={false} onRefresh={() => {}} />} />;
 ```
 
 ---

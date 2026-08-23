@@ -68,6 +68,7 @@
 	},
 
 	"editor.wordWrap": "on",
+	"editor.wordWrap": "on",
 	"editor": {
 		"detectIndentation": false,
 		"fontSize": 18,
@@ -100,6 +101,7 @@
 			"**/node_modules": true,
 			"**/vscode-chat-code-block": true
 		},
+		"eol": "\n",
 		"eol": "\n",
 		"associations": {
 			"*.ts": "typescript"
@@ -549,6 +551,7 @@
 	"[csv]": {
 		"editor.inlayHints.maximumLength": 0
 	},
+	"diffEditor.ignoreTrimWhitespace": false,
 	"diffEditor.ignoreTrimWhitespace": false,
 	"chat.tools.terminal.autoApprove": {
 		"git rev-parse": true,
