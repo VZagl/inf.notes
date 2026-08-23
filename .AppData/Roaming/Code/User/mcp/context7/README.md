@@ -73,11 +73,11 @@ Pasting the following configuration into your Cursor `~/.cursor/mcp.json` file i
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "url": "https://mcp.context7.com/mcp"
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"url": "https://mcp.context7.com/mcp"
+		}
+	}
 }
 ```
 
@@ -87,12 +87,12 @@ Pasting the following configuration into your Cursor `~/.cursor/mcp.json` file i
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -103,12 +103,12 @@ Pasting the following configuration into your Cursor `~/.cursor/mcp.json` file i
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "bunx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "bunx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -121,12 +121,12 @@ Pasting the following configuration into your Cursor `~/.cursor/mcp.json` file i
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "deno",
-      "args": ["run", "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION", "--allow-net", "npm:@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "deno",
+			"args": ["run", "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION", "--allow-net", "npm:@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -143,11 +143,11 @@ Add this to your Windsurf MCP config file. See [Windsurf MCP docs](https://docs.
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "serverUrl": "https://mcp.context7.com/sse"
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"serverUrl": "https://mcp.context7.com/sse"
+		}
+	}
 }
 ```
 
@@ -155,12 +155,12 @@ Add this to your Windsurf MCP config file. See [Windsurf MCP docs](https://docs.
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -212,14 +212,14 @@ Add this to your Visual Studio MCP config file (see the [Visual Studio docs](htt
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "context7": {
-        "type": "http",
-        "url": "https://mcp.context7.com/mcp"
-      }
-    }
-  }
+	"mcp": {
+		"servers": {
+			"context7": {
+				"type": "http",
+				"url": "https://mcp.context7.com/mcp"
+			}
+		}
+	}
 }
 ```
 
@@ -227,19 +227,20 @@ Or, for a local server:
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "context7": {
-        "type": "stdio",
-        "command": "npx",
-        "args": ["-y", "@upstash/context7-mcp"]
-      }
-    }
-  }
+	"mcp": {
+		"servers": {
+			"context7": {
+				"type": "stdio",
+				"command": "npx",
+				"args": ["-y", "@upstash/context7-mcp"]
+			}
+		}
+	}
 }
 ```
 
 For more information and troubleshooting, refer to the [Visual Studio MCP Servers documentation](https://learn.microsoft.com/visualstudio/ide/mcp-servers?view=vs-2022).
+
 </details>
 
 <details>
@@ -249,15 +250,15 @@ It can be installed via [Zed Extensions](https://zed.dev/extensions?query=Contex
 
 ```json
 {
-  "context_servers": {
-    "Context7": {
-      "command": {
-        "path": "npx",
-        "args": ["-y", "@upstash/context7-mcp"]
-      },
-      "settings": {}
-    }
-  }
+	"context_servers": {
+		"Context7": {
+			"command": {
+				"path": "npx",
+				"args": ["-y", "@upstash/context7-mcp"]
+			},
+			"settings": {}
+		}
+	}
 }
 ```
 
@@ -295,12 +296,12 @@ Add this to your Claude Desktop `claude_desktop_config.json` file. See [Claude D
 
 ```json
 {
-  "mcpServers": {
-    "Context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"Context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -315,8 +316,8 @@ You can easily install Context7 through the [Cline MCP Server Marketplace](https
 
 1. Open **Cline**.
 1. Click the hamburger menu icon (☰) to enter the **MCP Servers** section.
-2. Use the search bar within the **Marketplace** tab to find *Context7*.
-3. Click the **Install** button.
+1. Use the search bar within the **Marketplace** tab to find _Context7_.
+1. Click the **Install** button.
 
 </details>
 
@@ -327,12 +328,12 @@ Open the "Settings" page of the app, navigate to "Plugins," and enter the follow
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -383,16 +384,16 @@ If you prefer to run the MCP server in a Docker container:
 
    ```json
    {
-     "mcpServers": {
-       "Сontext7": {
-         "autoApprove": [],
-         "disabled": false,
-         "timeout": 60,
-         "command": "docker",
-         "args": ["run", "-i", "--rm", "context7-mcp"],
-         "transportType": "stdio"
-       }
-     }
+   	"mcpServers": {
+   		"Сontext7": {
+   			"autoApprove": [],
+   			"disabled": false,
+   			"timeout": 60,
+   			"command": "docker",
+   			"args": ["run", "-i", "--rm", "context7-mcp"],
+   			"transportType": "stdio"
+   		}
+   	}
    }
    ```
 
@@ -407,14 +408,14 @@ The configuration on Windows is slightly different compared to Linux or macOS (_
 
 ```json
 {
-  "mcpServers": {
-    "github.com/upstash/context7-mcp": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "@upstash/context7-mcp@latest"],
-      "disabled": false,
-      "autoApprove": []
-    }
-  }
+	"mcpServers": {
+		"github.com/upstash/context7-mcp": {
+			"command": "cmd",
+			"args": ["/c", "npx", "-y", "@upstash/context7-mcp@latest"],
+			"disabled": false,
+			"autoApprove": []
+		}
+	}
 }
 ```
 
@@ -474,12 +475,12 @@ Add this to your Roo Code MCP configuration file. See [Roo Code MCP docs](https:
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "type": "streamable-http",
-      "url": "https://mcp.context7.com/mcp"
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"type": "streamable-http",
+			"url": "https://mcp.context7.com/mcp"
+		}
+	}
 }
 ```
 
@@ -487,12 +488,12 @@ Add this to your Roo Code MCP configuration file. See [Roo Code MCP docs](https:
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -510,11 +511,8 @@ To configure Context7 MCP in Zencoder, follow these steps:
 
 ```json
 {
-    "command": "npx",
-    "args": [
-        "-y",
-        "@upstash/context7-mcp@latest"
-    ]
+	"command": "npx",
+	"args": ["-y", "@upstash/context7-mcp@latest"]
 }
 ```
 
@@ -529,14 +527,15 @@ Add this to your Amazon Q Developer CLI configuration file. See [Amazon Q Develo
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp@latest"]
+		}
+	}
 }
 ```
+
 </details>
 
 <details>
@@ -551,13 +550,14 @@ See [Qodo Gen docs](https://docs.qodo.ai/qodo-documentation/qodo-gen/qodo-gen-ch
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "url": "https://mcp.context7.com/mcp"
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"url": "https://mcp.context7.com/mcp"
+		}
+	}
 }
 ```
+
 </details>
 
 <details>
@@ -572,12 +572,12 @@ See [JetBrains AI Assistant Documentation](https://www.jetbrains.com/help/ai-ass
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -590,7 +590,6 @@ See [JetBrains AI Assistant Documentation](https://www.jetbrains.com/help/ai-ass
 Context7 MCP provides the following tools that LLMs can use:
 
 - `resolve-library-id`: Resolves a general library name into a Context7-compatible library ID.
-
   - `libraryName` (required): The name of the library to search for
 
 - `get-library-docs`: Fetches documentation for a library using a Context7-compatible library ID.
@@ -636,12 +635,12 @@ bun run dist/index.js --transport http --port 8080
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["tsx", "/path/to/folder/context7-mcp/src/index.ts"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["tsx", "/path/to/folder/context7-mcp/src/index.ts"]
+		}
+	}
 }
 ```
 
@@ -665,12 +664,12 @@ If you encounter `ERR_MODULE_NOT_FOUND`, try using `bunx` instead of `npx`:
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "bunx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "bunx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
@@ -685,12 +684,12 @@ For errors like `Error: Cannot find module 'uriTemplate.js'`, try the `--experim
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "--node-options=--experimental-vm-modules", "@upstash/context7-mcp@1.0.6"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "--node-options=--experimental-vm-modules", "@upstash/context7-mcp@1.0.6"]
+		}
+	}
 }
 ```
 
@@ -703,12 +702,12 @@ Use the `--experimental-fetch` flag to bypass TLS-related problems:
 
 ```json
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "--node-options=--experimental-fetch", "@upstash/context7-mcp"]
-    }
-  }
+	"mcpServers": {
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "--node-options=--experimental-fetch", "@upstash/context7-mcp"]
+		}
+	}
 }
 ```
 
