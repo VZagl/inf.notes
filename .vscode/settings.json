@@ -42,7 +42,7 @@
 		"diffEditorOverview.insertedForeground": "#3fb950cc",
 		"diffEditorOverview.removedForeground": "#f14c4ccc"
 	},
-	
+
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
