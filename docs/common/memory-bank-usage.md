@@ -166,6 +166,10 @@ memory-bank/completed-tasks/
 
 **Прочитать этот раздел до** обновления `tasks.md` или `activeContext.md` при инициализации новой задачи.
 
+#### Оформление Markdown
+
+Файлы Memory Bank — обычные `.md`: [markdown-conventions.md](markdown-conventions.md). Образцы плотности списков и метаблоков в этом репозитории: `memory-bank/backlog.md`, `memory-bank/completed-tasks/_template.md`.
+
 #### Создание отсутствующих файлов
 
 Если `memory-bank/` нет или не хватает ядра — создать только **отсутствующие** файлы. Уже существующие не перезаписывать.

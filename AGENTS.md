@@ -11,7 +11,7 @@
 
 ## Структура docs
 
-- `docs/common/` — общие правила, которые можно переиспользовать между проектами (например: `git-commit-description.md`, `git-workflow.md`, `dev-environment.md`, `memory-bank-usage.md`, `agent-*.md`).
+- `docs/common/` — общие правила, которые можно переиспользовать между проектами (например: `git-commit-description.md`, `git-workflow.md`, `dev-environment.md`, `memory-bank-usage.md`, `markdown-conventions.md`, `agent-*.md`).
 
 - `docs/project/` — настройки, специфичные для этого проекта (например: `project-structure.md`, `tech-stack.md`, `testing-guidelines.md`, `run-and-build.md`; при работе Memory Bank — `implementation-plan.md`, `product-roadmap.md`).
 
@@ -326,6 +326,7 @@ describe('Рендеринг', () => {
 - Вывод кода в чат: `docs/common/agent-output-rules.md`.
 - Внесение правок и сохранение комментариев: `docs/common/agent-editing-rules.md`.
 - JSDoc и текстовые пояснения: `docs/common/agent-docstyle-rules.md`.
+- Markdown-файлы (разметка, пустые строки, списки): `docs/common/markdown-conventions.md`.
 
 ### Создание описания коммитов
 
