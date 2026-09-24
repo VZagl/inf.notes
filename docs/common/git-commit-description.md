@@ -75,15 +75,17 @@ Closes #123
 
 **Правила выбора type:**
 
-1. **`docs(memory-bank):`** — только если **одновременно**: в staged есть правки в **`memory-bank/**`**; **нет** прикладного кода (каталоги продукта из `docs/project/project-structure.md` → «Каталоги продукта», продуктовые тесты, конфиги как часть фичи); по контексту это **трекинг** (`/van`…`/close-task`), **не** итог **`/build`**. Допускаются **сателлиты** из списка выше (типичный `/close-task`: Memory Bank + **Completed** в плане).
+0. Staged содержит **только** `memory-bank/backlog.md` (ровно один файл) → **`docs(backlog):`** по общему формату ветки B; правило **`docs(memory-bank)` не применяется**. В описании заголовка **указывать** ID затронутой задачи из diff (заголовок карточки `### … (step-…)`), **не** из `memory-bank/tasks.md`. Если в одном коммите затронуто несколько задач — ID основной по смыслу diff в заголовке, остальные в теле.
+1. **`docs(memory-bank):`** — только если **одновременно**: в staged есть правки в **`memory-bank/**`**; **нет** прикладного кода (каталоги продукта из `docs/project/project-structure.md` → «Каталоги продукта», продуктовые тесты, конфиги как часть фичи); по контексту это **трекинг** (`/van`…`/close-task`), **не** итог **`/build`**; **не** случай п.0. Допускаются **сателлиты** из списка выше (типичный `/close-task`: Memory Bank + **Completed** в плане).
 2. **Итог `/build`** — **никогда** `docs(memory-bank)`, даже если нет каталогов продукта из `docs/project/project-structure.md` и меняются только `docs/**/*` и/или `memory-bank/tasks.md`, `progress.md`, `activeContext.md`: выбрать **`feat` / `fix` / `refactor` / `test` / `docs` / `docs(plan):`** по смыслу diff.
 3. В staged **есть** прикладной код **и** правки в `memory-bank/` (часто **`/build`**) → **`feat` / `fix` / `refactor` и т.д.**, scope области фичи; **не** `docs(memory-bank)`.
 4. Правки **только** в `docs/` **без** `memory-bank/` → `docs(plan):`, `docs:` и т.д.; **отсутствие** путей прикладного кода из `docs/project/project-structure.md` **само по себе** не означает `docs(memory-bank)`.
 
-**Подсказка для ИИ:** `docs(memory-bank):` — когда в diff есть **`memory-bank/**`** и контекст — **`/close-task`** / инициализация задачи / рефлексия / архив, **а не** `/build`. Для **`/build`** с одними только `docs/\*_/_` смотреть п.2 и п.4.
+**Подсказка для ИИ:** единственный staged `memory-bank/backlog.md` → п.0, **`docs(backlog):`**. `docs(memory-bank):` — когда в diff есть **`memory-bank/**`** и контекст — **`/close-task`** / инициализация задачи / рефлексия / архив, **а не** `/build` и **не** п.0. Для **`/build`** с одними только `docs/\*_/_` смотреть п.2 и п.4.
 
 **Специальные случаи:**
 
+- Только `memory-bank/backlog.md` в staged — см. п.0 «Правила выбора type» и `.cursor/commands/git-commit.md` → «Только memory-bank/backlog.md».
 - Breaking change: `type(scope)!: описание` или в теле `BREAKING CHANGE: описание`
 - Откат: `revert: <заголовок откатываемого коммита>` + в теле `This reverts commit <hash>.`
 
@@ -96,6 +98,7 @@ Scope должен отражать область кодовой базы, на
 - **Конфигурация/инструменты**: `config`, `build`, `ci`, `lint`
 - **Документация**:
   - `docs(memory-bank):` — по правилу «Приоритет type: memory-bank» (есть `memory-bank/**`, трекинг `/van`…`/close-task`, **не** `/build`; сателлиты вроде `implementation-plan.md` только вместе с этим). Не использовать `chore`.
+  - `docs(backlog):` — **только** `memory-bank/backlog.md`, когда файл **единственный** в staged; в описании — ID задачи из diff backlog (`step-…`), не из `tasks.md`
   - `docs(commit):` — для документации о правилах коммитов
   - `docs(api):` — для документации API
   - `docs(readme):` — для README файлов
@@ -143,8 +146,9 @@ BREAKING CHANGE: новый формат ответа /refresh требует о
 ## Чеклист создания коммита
 
 - [ ] Выполнен `git status` и `git diff --staged`
-- [ ] При изменениях в `memory-bank/` применён «Приоритет type: memory-bank»
-- [ ] Для трекинг-фаз Memory Bank: заголовок собран по шаблону из `.cursor/commands/git-commit.md` (подстановка только `{task_id}`)
+- [ ] При изменениях в `memory-bank/` применён «Приоритет type: memory-bank» (кроме единственного staged `memory-bank/backlog.md` → `docs(backlog):`)
+- [ ] Для единственного staged `memory-bank/backlog.md`: ветка B, заголовок `docs(backlog): …` с ID задачи из diff
+- [ ] Для трекинг-фаз Memory Bank: заголовок собран по шаблону из `.cursor/commands/git-commit.md` (подстановка только `{task_id}` из `tasks.md`)
 - [ ] Сформирован заголовок `type(scope): описание` (ветка B) или `docs(memory-bank): <шаблон>` (ветка A)
 - [ ] Добавлено тело с маркированным списком изменений
 - [ ] Показано описание и получено подтверждение пользователя
